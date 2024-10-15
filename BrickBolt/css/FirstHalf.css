@@ -1,0 +1,530 @@
+/* Main Header CSS Starts */
+.dropdown-menu {
+    border-radius: 0;
+    border: 0;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
+    color: #1D1A12;
+  } 
+ 
+  .more-dropdownMenu {
+    font-size: 0.9rem;
+    font-family: "DM Sans", sans-serif;
+    margin-top: 10px;
+    box-shadow: 0 0 1px gray;
+  }
+
+  .dropdown-menu a:hover {
+    color: #F15A29;
+    background-color: transparent;
+  }
+
+  .nav-link span i {
+    transition: transform 0.3s ease-in;
+
+  }
+
+  .call-icon {
+
+    background-color: #007AFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+  }
+
+  /* left space of logo */
+  .logoLeft-padding {
+    padding-left: 150px !important;
+  }
+
+  .navbar-nav .nav-item:hover .heading {
+    color: #F15A29;
+  }
+
+  .nav-link {
+    color: #1D1A12;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+
+  }
+
+  /* default arrow symbol disappear  */
+  .dropdown-toggle::after {
+    display: none;
+  }
+
+  .header-btn {
+    color: white;
+    background-color: #F15A29;
+    border: none;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    padding: 10px;
+    box-shadow: 5px 5px 2px rgba(128, 128, 128, 0.473);
+  }
+
+  .header-btn:hover {
+    box-shadow: none;
+    color: white;
+  }
+
+  .blore-bg-cr {
+    background-color: #FF50290D;
+  }
+
+  .vertical-line {
+    display: inline-block;
+    border-left: 1px solid rgba(128, 128, 128, 0.2);
+    /* The vertical line */
+    height: 45px;
+    /* Height of the line */
+    margin: 0 20px;
+    /* Spacing between elements */
+  }
+  /* Main Header CSS Ends */
+
+  /* Header Body CSS Strats */
+  .header{
+    background-image: url("../assets/genericPlain.webp");
+    
+    background-size:cover;
+    background-position: cover;
+    background-repeat: no-repeat;
+    /* height:95vh;*/ 
+    height:500px;
+}
+form{
+    height: 450px;
+}
+.fs-8 {
+        font-size: 11px;
+        /* font-size: 0.8vw; */
+    }
+.form-details{
+        width:380px;
+        
+        padding: 25px;
+        box-shadow: 0 0 1px ;
+        background-color: white;
+    }
+    .form-details input{
+        border: none;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.276);
+        padding-bottom: 5px;  
+        margin-top: 23px;          
+    
+        font-size: 1rem;
+        width:330px;
+    }
+    form .hire-btn{
+
+        font-size: 1rem;
+    }
+    .btn-whatsapp{
+        display: flex;
+    }
+     
+    /* applying defult styles to error messages */
+    .dnone{
+        color: red;
+        font-size: 0.9rem;  
+        display: none;         
+    }
+    /* Header Body CSS Ends */
+
+    /* Our Services CSS Starts */
+        .ourservice-img {
+        /* width: 500px; */
+        height: 20vw;
+    }      
+    .ourservice-res{
+     display:flex;
+     gap:20px;
+    }
+    .ourservice-bg{
+        flex:1;
+        /* height: 300px; */
+    }
+    .ourservice-bg .service-content {            
+        color: white;
+        font-weight: bold;
+        border-top: 5px solid rgb(255, 69, 0, 0.89);    
+        transition: background-position 0.5s ease;
+        background-color: black;
+        /* padding: 5px; */        
+    }     
+    .ourservice-bg:hover .ourservice-img img {
+        cursor: pointer;
+        transform: scale(1.1);
+        transition: 1s;
+    }
+
+    .ourservice-img {
+        overflow: hidden;
+    }
+
+    .ourservice-bg:hover p{
+        background-color: rgb(255, 69, 0, 0.89);
+        transition: 0.5s;
+    }
+    /* Our Services CSS Ends */
+
+    /* Why Brick&Bolt CSS Starts */
+    .whybb-content {
+        color: rgba(0, 0, 0, 0.55);
+        font-size: 16px;
+        font-weight: 500;        
+    }
+
+    .whybb-cardcontent {
+        text-align: center;
+        height: 170px;
+    }
+
+    h6 {
+        color: #1D1A12;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .dmSans {
+        font-family: "DM Sans", sans-serif;
+    }
+
+    .whybb-anchor {
+        text-decoration: none;
+    }
+
+    .whybb-anchor:hover h6 {
+        text-decoration: underline;
+    }
+
+    .dashed-line {
+        margin-block: 80px;
+        border-top: 2px dashed rgba(0, 0, 0, 0.2);
+        /* Top border with dotted style */
+        width: 100%;
+    }
+    .track{
+        margin-top: 1.5rem;
+        line-height: 1rem;
+        font-size: 1.1rem;            
+    }
+    .track p::before{
+        content:"\f058";
+        font-family: "Font Awesome 5 Free";
+        margin-right: 10px;
+        color: #F15A29;
+    }
+/* Why Brick&Bolt CSS Ends */
+
+/* Our Projects CSS Starts */
+.rectangle-pos{
+    position: relative;
+}
+.ourprojects-slider-wrapper {
+    overflow: hidden;
+    /* max-width: 1200px;  */
+    margin-bottom:55px;
+}
+
+.ourprojects-img {
+    width: 50%;    
+    position: relative;   
+}
+.Ourprojects-card-item {
+    height: 310px;
+    /* width:400px; */
+    box-shadow: 0 0 5px gray;
+    border: 1px solid rgba(128, 128, 128, 0.221);    
+}
+
+.Ourprojects-card-item:hover {
+    background-color: #F15A29;
+}
+
+.ourprojects-img-div {
+    height: 230px;
+
+}
+
+.img-name {
+    position: absolute;
+    bottom: 85%;
+    left: 10px;
+    color: white;
+    font-size: 15px;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.Ourprojects-card-item p {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
+    padding-inline: 10px;
+}
+
+.Ourprojects-card-item h5 {
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.8);
+    padding-inline: 10px;
+
+}
+
+.Ourprojects-imgsec-mt {
+    margin-top: 2rem;
+    padding-inline: 20px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px !important;
+    height: 4px !important;
+    border-radius: 0 !important;
+}
+
+.circle {
+
+    padding: 15px;
+    font-size: 1.3rem;
+    border: 1px solid #F15A29;
+    color: #F15A29;
+    border-radius: 50%;
+    background-color: white;
+
+}
+.circle:hover{
+    background-color:  #F15A29;
+    color: white;
+}
+/* overwriting swiper arrow keys CSS properties */
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+    content: "" !important;
+}
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+    content: "" !important;
+}
+.swiper-button-prev{
+    position: absolute;
+    left: 18px;
+    top: 160px !important;       
+   
+         }
+.swiper-button-next{
+    position: absolute;
+    right: 18px;
+    top: 160px;
+
+}
+/* Our Projects CSS ends */
+
+/* Home Construction CSS Starts */
+option {
+    /* background-color: silver; */
+    cursor: pointer;
+
+}
+
+/* ------------------------------ */
+.custom-dropdown {
+    font-size: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    background-color: transparent !important;
+    padding: 20px;
+    border: none !important;
+    /* border: 1px solid #ccc; */
+    /* background-color: #fff; */
+    cursor: pointer;
+    color: red !important;
+}
+
+
+.dropdown-options {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    /* border: 1px solid #ccc; */
+    z-index: 1;
+    /* width: 100%; */
+}
+
+.option {
+    padding: 10px;
+    cursor: pointer;
+}
+div[selected] {
+    background-color: silver !important;
+
+}
+.option:hover {
+    background-color: silver !important;
+    /* color: red !important; */
+}
+
+/* ----------------------------- */
+.lp-title p {
+    font-size: 1rem;
+    color: rgba(0, 0, 0, 0.75);
+    font-family: "DM Sans", sans-serif;
+
+    font-weight: 500;
+}
+
+.accordion-body p {
+    font-size: 1rem;
+    line-height: 1.2rem;
+}
+
+.small-text {
+    font-size: 1rem;
+}
+
+/* over writing bs properties */
+.card-body {
+    padding: 0;
+    text-align: start;
+}
+
+/* Making default display as - display :none */
+.fa-minus {
+    display: none;
+}
+
+/* We r removing bs Arrow symbol when collapsed */
+.accordion-button::after {
+    background-image: none;
+    content: "";
+}
+
+/* We r removing bs Arrow symbol when not collapsed */
+.accordion-button:not(.collapsed)::after {
+    background-image: none;
+}
+
+/* We r displaying - symbol when not collapsed */
+.accordion-button:not(.collapsed) .fa-minus {
+    display: block;
+}
+
+/* making + symbol hide , when not collapsed */
+.accordion-button:not(.collapsed) .fa-plus {
+    display: none;
+}
+
+/* Positioning +/- 30px from right end */
+.accordion-button .plus,
+.accordion-button .minus {
+    position: absolute;
+    right: 30px;
+}
+
+.lp-card-title {
+    padding-block: 1rem;
+    background-color: rgb(255, 69, 0, 0.89);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: "DM Sans", sans-serif;
+    ;
+}
+
+/* Over writing defualt properties of accordian item when focused(bg-color:light blue) & not collapsed(boxshadow:0 0 1px light blue)  */
+.accordion-button:not(.collapsed) {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.accordion .acc-btn:focus {
+    box-shadow: none !important;
+}
+
+.accordion-button {
+    padding-inline: 0 !important;
+    padding-block: 14px;
+    font-weight: bold;
+}
+
+.blore-dropdown {
+    border: none;
+    background-color: transparent;
+}
+/* Home Construction CSS Ends */
+
+/* OurCustomers CSS Starts */
+.quotes{
+    color: rgb(255, 69, 0, 0.89);
+    font-size: 30px;
+    position: relative;
+    bottom: 34px;
+    
+ }
+.ourcustomers-slider-wrapper {
+    overflow: hidden;
+    /* max-width: 1200px;  */
+    margin-bottom:55px;
+}
+
+
+.Our-customers-card-item {
+    
+    /* width:380px; */
+    /* width:400px; */
+    /* box-shadow: 0 0 5px gray; */
+    /* border: 1px solid rgba(128, 128, 128, 0.221); */
+    font-family: "DM Sans", sans-serif;
+}      
+
+.Our-customers-card-item p {
+    font-size: 1rem;
+    margin-top: -30px;
+}
+
+.Our-customers-card-item h5 {
+    font-size: 1rem;
+    font-weight: bold; 
+    margin-top: 20px;         
+ }
+
+.swiper-pagination-bullet {
+    width: 15px !important;
+    height: 2.1px !important;
+    border-radius: 0 !important;            
+}       
+.circle {
+
+    padding: 12px;
+    font-size: 1.5rem;
+    border: 1px solid rgb(255, 69, 0, 0.89);
+    color: rgb(255, 69, 0, 0.89);
+    border-radius: 50%;
+    background-color: white;
+
+}
+.circle:hover{
+    background-color:  rgb(255, 69, 0, 0.89);
+    color: white;
+}
+/* overwriting swiper arrow keys CSS properties */
+.swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
+    content: "" !important;
+}
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
+    content: "" !important;
+}
+.swiper-button-prev{
+    position: absolute;
+    left: 10px;
+    top: 160px !important;       
+   
+         }
+.swiper-button-next{
+    position: absolute;
+    right: 10px;
+    top: 160px;
+
+}
+/* OurCustomers CSS Ends */

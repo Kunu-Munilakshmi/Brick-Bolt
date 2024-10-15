@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Packages</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+ <!-- font awsome link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- linking internal Css file -->
+  <link rel="stylesheet" href="./css/FirstWebPage.css">
+  <style>
+    /* PENDINGS.....Dropdown JS functionalities & accordian last button JS functionalities  */
+    /* body {
+      font-family: serif, Arial, Helvetica, sans-serif !important;
+      overflow-x: hidden;
+    } */
+    /* Heading of accordion item's font family changed' */
+    option{
+      /* background-color: silver; */
+      cursor: pointer;
+
+    }
+ /* ------------------------------ */
+ .custom-dropdown {
+  font-size: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+  background-color: transparent !important;
+    padding: 20px;
+    border: none !important;
+    /* border: 1px solid #ccc; */
+    /* background-color: #fff; */
+    cursor: pointer;
+    color: red !important;
+}
+
+
+.dropdown-options {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    /* border: 1px solid #ccc; */
+    z-index: 1;
+    /* width: 100%; */
+}
+
+.option {
+    padding: 10px;
+    cursor: pointer;
+}
+div[selected]{
+    background-color: silver !important;
+
+}
+.option:hover {
+    background-color: silver !important;
+    /* color: red !important; */
+}
+
+
+   
+/* ----------------------------- */
+    .lp-title p {
+      font-size: 1rem;
+      color: rgba(0, 0, 0, 0.75);
+      font-family: "DM Sans", sans-serif;
+
+      font-weight: 500;
+    }
+    
+    .accordion-body p {
+      font-size: 1rem;
+      line-height: 1.2rem;
+    }
+
+    .small-text {
+      font-size: 1rem;
+    }
+
+    /* over writing bs properties */
+    .card-body {
+      padding: 0;
+      text-align: start;
+    }
+
+    /* Making default display as - display :none */
+    .fa-minus {
+      display: none;
+    }
+
+    /* We r removing bs Arrow symbol when collapsed */
+    .accordion-button::after {
+      background-image: none;
+      content: "";
+    }
+
+    /* We r removing bs Arrow symbol when not collapsed */
+    .accordion-button:not(.collapsed)::after {
+      background-image: none;
+    }
+
+    /* We r displaying - symbol when not collapsed */
+    .accordion-button:not(.collapsed) .fa-minus {
+      display: block;
+    }
+
+    /* making + symbol hide , when not collapsed */
+    .accordion-button:not(.collapsed) .fa-plus {
+      display: none;
+    }
+  /* Positioning +/- 30px from right end */
+    .accordion-button .plus,
+    .accordion-button .minus {
+      position: absolute;
+      right: 30px;
+    }
+
+    .lp-card-title {
+      padding-block: 1rem;
+      background-color: rgb(255, 69, 0, 0.89);
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 400;
+      font-family: "DM Sans", sans-serif;
+      ;
+    } 
+    /* Over writing defualt properties of accordian item when focused(bg-color:light blue) & not collapsed(boxshadow:0 0 1px light blue)  */
+    .accordion-button:not(.collapsed) {
+      background-color: transparent !important;
+      box-shadow: none !important;
+    } 
+    .accordion .acc-btn:focus {
+      box-shadow: none !important;    
+    }
+    .accordion-button {
+      padding-inline: 0 !important;
+      padding-block: 14px;
+      font-weight: bold;
+    
+    }
+    .blore-dropdown {     
+      border: none;
+      background-color: transparent;
+    }
+     /* Responsive */
+     @media (min-width:992px) {
+      .lp-title .diagnol {
+        position: relative;
+        left: -3px;
+      }
+    }
+
+    /* Debugging FRO: To overwrite predefined class properties */
+    /* .accordion-button:focus { */
+    /* background-color: transparent !important; Keep the background transparent on focus */
+    /* border: 1px solid red !important; Keep the border red on focus */
+    /* box-shadow: 5px 10px red !important; Custom box shadow on focus */
+    /* } */
+  </style>
+</head>
+
+<body>
+
+  <div class="bg-danger py-5 " style="--bs-bg-opacity:.07">
+    <div class="container ">
+      <div class="lp-title text-lg-center">
+        <h4 class="mb-3"><span class="diagnol"></span>LuxuryPackages<span class="diagnol diagnol-right ms-2 "></span>
+        </h4>
+        <p >Find the best Luxury Packages.*</p>
+        <p>Currently showing for
+          <!-- creating BENGALURU dropdown -->
+          <span class="custom-dropdown">
+            <button class="dropdown-button p-0">BENGALURU <i class="fa-solid fa-angle-down fa-lg"></i> </button>
+           
+            <div class="dropdown-options">
+                <div class="option option1" data-value="BENGALURU" selected>BENGALURU</div>
+                <div class="option option1" data-value="Bengaluru" selected>Bengaluru</div>
+                <div class="option" data-value="Chennai">Chennai</div>
+                <div class="option" data-value="Hyderabad">Hyderabad</div>
+                <div class="option" data-value="Mysuru">Mysuru</div>
+                <div class="option" data-value="NCR-Delhi">NCR-Delhi</div>
+                <div class="option" data-value="NCR-Faridabad">NCR-Faridabad</div>
+                <div class="option" data-value="NCR-Ghaziabad">NCR-Ghaziabad</div>
+                <div class="option" data-value="NCR-Noida">NCR-Noida</div>
+                <div class="option" data-value="Pune">Pune</div>
+            </div>
+          </span>      
+         
+        </p>
+      </div>
+
+      <!-- Making boxes flex -->
+      <div class="d-flex justify-content-between  dmSans mt-5 ">
+        <!-- 1st box details start -->
+        <section>
+          <div class="card " style="width: 26rem;border:0">
+            <div class="card-body ">
+              <h5 class="card-title lp-card-title">&nbsp &nbspFreesia Package - 3690/sq.ft <span
+                  class="small-text">(Incl.
+                  GST)</span> </h5>
+              <!-- Accordian items Starts -->
+              <div class="accordion accordion-flush mx-4 " id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn collapsed  px-0" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Design & Drawings <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"
+                        style="padding-left:200px;"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p> Architectural Layout | 2D</p>
+                      <p>Basic Elevation</p>
+                      <p>Structural Design</p>
+                      <p>3D Elevation</p>
+                      <p>Electrical Drawings</p>
+                      <p>Plumbing Drawings</p>
+                      <p>Furniture plan</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed  " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+                      id="acc-btn">
+                      Structure <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p> Earthquake resistant design & Weather proof structure,promising safety & quality for
+                        generations</p>
+                      <p>Steel-Jindal or equivalent</p>
+                      <p>Cement - ACC or Ultratech or equivalent of 43 or 53 grade </p>
+                      <p>Aggregates - 20mm & 40mm</p>
+                      <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
+                      <p>RCC Design Mix - ACC or Ultratech M25 or As per the structural designer recommendation</p>
+                      <p>Ceiling Height - 12 feet Finished Floor level to Finished Floor level</p>
+                      <p>Antitermite treatment is included as part of the package</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
+                      id="acc-btn">
+                      Kitchen <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>Indian / Italian Marble for Wall Dado of value upto ₹ 380 per sqft</p>
+                      <p>Kitchen Sink of Kaff / Franke make of value upto ₹ 10,000.</p>
+                      <p>Main sink faucet of value upto ₹ 5000 (Grohe / Kohler make)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"
+                      id="acc-btn">
+                      Bathroom<i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFour" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>Bathroom Italian Marble wall Dado of upto 7' height - Value of upto ₹ 380 per sqft</p>
+                      <p>CP fittings of Grohe / Kohler make of value upto ₹ 5 lakhs will be provided for upto 3
+                        bathrooms including accessories upto package area of 3000 sft</p>
+                      <p>Sanitarywares of Grohe / Kohler make of value upto ₹ 2.5 lakhs will be provided for upto 3
+                        bathrooms</p>
+                      <p>Centralized Energy saving heat pump of value upto ₹ 3 lakhs will be provided</p>
+                      <p>Moisture resistant / Grid false ceiling in bathrooms</p>
+                      <p>Glass partition for shower area to divide the wet area &amp; dry area in the Master Bathroom
+                      </p>
+                      <p>Motion sensor lighting</p>
+                      <p>Bathroom Doors - Louvered teak wood door of 2'6"x7' of value upto ₹ 20000</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"
+                      id="acc-btn">
+                      Doors & Windows <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFive" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>Windows - High Precision double glazed sound &amp; weather proof UPVC / wooden windows with
+                        mesh shutters of Eiti or equivalent make</p>
+                      <p>Main Door - High performance Engineered wood imported Burma teak wood door of value upto ₹
+                        80,000 including fixtures.</p>
+                      <p>Internal Doors - Membrane doors / Flush Door with Veneer of value upto ₹ 25,000 including
+                        fixtures. Door Frames of imported Ghana Teak Jamb lining.</p>
+                      <p>Bathroom Doors - Louvered teak wood door of 2'6"x7' of value upto ₹ 20000</p>
+                      <p>1 Pooja Room Door - Burma Teak along with Teak frame of value upto ₹ 40,000 including
+                        fixtures
+                        for every 4,000 sft package.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"
+                      id="acc-btn">
+                      Painting <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseSix" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>Interior Painting - JK Putty + Asian Royale Emulsion or equivalent</p>
+                      <p>Exterior Painting - Asian Primer + Apex Ultima Protek Paint or equivalent</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven"
+                      id="acc-btn">
+                      Flooring <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>Living, Dining, Other bedrooms including Kitchen Flooring - Marble of value upto ₹ 380 per
+                        sqft
+                      </p>
+                      <p>Master Bedroom &amp; Kids Bedroom - American Oak wooden flooring of value upto ₹ 900 per sqft
+                      </p>
+                      <p>Bathroom flooring - Antiskid tiles / marble of value upto ₹ 380 per sqft</p>
+                      <p>Balcony &amp; Open areas flooring - Antiskid tiles of value upto ₹ 120 per sqft</p>
+                      <p>Staircase flooring - Marble of value upto ₹ 380 per sqft</p>
+                      <p>Parking Tiles - Stamp concrete finish / natural stones of value upto ₹ 100 per sqft</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight"
+                      id="acc-btn">
+                      Electrical <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseEight" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>All wiring shall be done with fire proof wires of Finolex silver FR or equivalent.</p>
+                      <p>Switches &amp; Sockets - Legrand Myrius, Schneider Zencelo or GM equivalent</p>
+                      <p>UPS Wiring</p>
+                      <p>1 EV Charging Point</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine"
+                      id="acc-btn">
+                      Miscellaneous <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseNine" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>A Sintex Triple layered overhead tank of - 2500L shall be provided. Any Additional capacity
+                        shall be chargeable at INR 9 per L. Platform for the OHT shall be charged additional based on
+                        the design and specifications</p>
+                      <p>Underground Sump - 10,000 Ltrs</p>
+                      <p>Staircase Railing - SS (Stainless) Glass Railing of SS 304 grade profiles / MS railing with
+                        wooden hand rail</p>
+                      <p>Window Grills - Basic MS Grill with enamel Paint at ₹ 200 per Sqft</p>
+                      <p>1 Copper gas connection for every dwelling unit of 1,500 sft package area</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen"
+                      id="acc-btn">
+                      Luxury Indulgences for the Globetrotter <i class="fa-solid fa-plus plus"></i> <i
+                        class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTen" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                      <p>Home Automation with Motion Sensor, Appliance control including AC, Kitchen Appliances,
+                        Curtain
+                        control, Mood lighting**</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 1st box details Ends -->
+        </section>
+        <!-- 2nd box details Starts -->
+        <section>
+          <div class="card " style="width: 26rem;border:0">
+            <div class="card-body ">
+              <h5 class="card-title lp-card-title">&nbsp &nbsp Dahlia Package - 4790/sq.ft <span
+                  class="small-text">(Incl.
+                  GST)</span> </h5>
+              <!-- Accordian items Starts -->
+              <div class="accordion accordion-flush mx-4 " id="accordionFlushExample1">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn collapsed px-0" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Design & Drawings <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"
+                        style="padding-left:200px;"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>2D Floor Plan</p>
+                      <p> Architectural Layout | 2D</p>
+                      <p>Structural Design</p>
+                      <p>3D Elevation</p>
+                      <p>Electrical Drawings</p>
+                      <p>Plumbing Drawings</p>
+                      <p>Furniture plan</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed    " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+                      id="acc-btn">
+                      Structure <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p> Earthquake resistant design & Weather proof structure,promising safety & quality for
+                        generations</p>
+                      <p>Steel-Jindal or equivalent</p>
+                      <p>Cement - ACC or Ultratech or equivalent of 43 or 53 grade </p>
+                      <p>Aggregates - 20mm & 40mm</p>
+                      <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
+                      <p>RCC Design Mix - ACC or Ultratech M25 or As per the structural designer recommendation</p>
+                      <p>Ceiling Height - 12 feet Finished Floor level to Finished Floor level</p>
+                      <p>Antitermite treatment is included as part of the package</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
+                      id="acc-btn">
+                      Kitchen <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>Indian / Italian Marble for Wall Dado of value upto ₹ 380 per sqft</p>
+                      <p>Kitchen Sink of Kaff / Franke make of value upto ₹ 12,000.</p>
+                      <p>Main sink faucet of value upto ₹ 6000 (Roca / Grohe / Kohler make)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"
+                      id="acc-btn">
+                      Bathroom<i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFour" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>Bathroom Italian Marble wall Dado of upto 7' height - Value of upto ₹ 450 per sqft</p>
+                      <p>CP fittings of Grohe / Kohler make of value upto ₹ 7 lakhs will be provided for upto 3
+                        bathrooms including accessories upto package area of 3000 sft</p>
+                      <p>Sanitarywares of Grohe / Kohler make of value upto ₹ 3.5 lakhs will be provided for upto 3
+                        bathrooms</p>
+                      <p>Centralized Energy saving heat pump of value upto ₹ 3 lakhs will be provided</p>
+                      <p>Moisture resistant / Grid false ceiling in bathrooms</p>
+                      <p>Glass partition for shower area to divide the wet area &amp; dry area in the Master Bathroom
+                      </p>
+                      <p>Motion sensor lighting</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed    " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"
+                      id="acc-btn">
+                      Doors & Windows <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFive" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>Windows - High Precision double glazed sound &amp; weather proof UPVC / wooden windows with
+                        mesh shutters of Eiti or equivalent make</p>
+                      <p>Main Door - High performance Engineered wood imported Burma teak wood door of value upto ₹
+                        1,20,000 including fixtures.</p>
+                      <p>Internal Doors - Membrane doors / Flush Door with Veneer of value upto ₹ 30,000 including
+                        fixtures. Door Frames of imported Ghana Teak Jamb lining.</p>
+                      <p>Bathroom Doors - Louvered teak wood door of 2'6"x7' of value upto ₹ 25000</p>
+                      <p>1 Pooja Room Door - Burma Teak along with Teak frame of value upto ₹ 50,000 including
+                        fixtures
+                        for every 4,000 sft package.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"
+                      id="acc-btn">
+                      Painting <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseSix" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>Interior Painting - JK Putty + Asian Royale Emulsion or equivalent</p>
+                      <p>Exterior Painting - Asian Primer + Apex Ultima Protek Paint or equivalent</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven"
+                      id="acc-btn">
+                      Flooring <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>Living, Dining, Other bedrooms including Kitchen Flooring - Marble of value upto ₹ 450 per
+                        sqft
+                      </p>
+                      <p>Master Bedroom &amp; Kids Bedroom - American Oak wooden flooring of value upto ₹ 900 per sqft
+                      </p>
+                      <p>Bathroom flooring - Antiskid tiles / marble of value upto ₹ 450 per sqft</p>
+                      <p>Balcony &amp; Open areas flooring - Antiskid tiles of value upto ₹ 150 per sqft</p>
+                      <p>Staircase flooring - Marble of value upto ₹ 450 per sqft</p>
+                      <p>Parking Tiles - Stamp concrete finish / natural stones of value upto ₹ 120 per sqft</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight"
+                      id="acc-btn">
+                      Electrical <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseEight" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>All wiring shall be done with fire proof wires of Finolex silver FR or equivalent.</p>
+                      <p>Switches &amp; Sockets - Legrand Myrius, Schneider Zencelo or GM equivalent</p>
+                      <p>UPS Wiring</p>
+                      <p>1 EV Charging Point</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine"
+                      id="acc-btn">
+                      Miscellaneous <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseNine" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>A Sintex Triple layered overhead tank of - 2500L shall be provided. Any Additional capacity
+                        shall be chargeable at INR 9 per L. Platform for the OHT shall be charged additional based on
+                        the design and specifications</p>
+                      <p>Underground Sump - 11,000 Ltrs</p>
+                      <p>Staircase Railing - SS (Stainless) Glass Railing of SS 304 grade profiles / MS railing with
+                        wooden hand rail</p>
+                      <p>Window Grills - Basic MS Grill with enamel Paint at ₹ 250 per Sqft</p>
+                      <p>1 Copper gas connection for every dwelling unit of 1,500 sft package area</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen"
+                      id="acc-btn">
+                      Luxury Indulgences for the Globetrotter <i class="fa-solid fa-plus plus"></i> <i
+                        class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTen" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>Home Automation with Motion Sensor, Appliance control including AC, Kitchen Appliances,
+                        Curtain
+                        control, Mood lighting**</p>
+                      <p>Centralized all weather air conditioning units by Mitsubishi / Carrier / Daikin make</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven"
+                      id="acc-btn">
+                      Home Automation including safety &amp; security worth INR 7 lakhs <i
+                        class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseEleven" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample1">
+                    <div class="accordion-body">
+                      <p>CCTV cameras at all vantage points</p>
+                      <p>False ceiling with recessed coves and cornices</p>
+                      <p>Fire leak and Panic buttons in strategic areas</p>
+                      <p>Gate for car parking area</p>
+                      <p>Intrusion alert automated system</p>
+                      <p>Private Glass see through Elevator of Mitsubishi/Schindler make - worth 8 lakhs</p>
+                      <p>Safety and Security with Biometric and App based Keyless Entry and Exit</p>
+                      <p>Video Door phone with extension to Kitchen, Living/Dining and Master Bedroom</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- 2nd box details Ends -->
+         <!-- 3rd box details Starts -->
+         <section>
+          <div class="card " style="width: 26rem;border:0">
+            <div class="card-body ">
+              <h5 class="card-title lp-card-title">&nbsp &nbspMagnolia Package - 5910/sq.ft <span
+                  class="small-text">(Incl.
+                  GST)</span> </h5>
+              <!-- Accordian items Starts -->
+              <div class="accordion accordion-flush mx-4 " id="accordionFlushExample2">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn collapsed px-0" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                      Design & Drawings <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"
+                        style="padding-left:200px;"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseOne" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p> Architectural Layout | 2D</p>
+                      <p>Basic Elevation</p>
+                      <p>Structural Design</p>
+                      <p>3D Elevation</p>
+                      <p>Electrical Drawings</p>
+                      <p>Plumbing Drawings</p>
+                      <p>Furniture plan</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo"
+                      id="acc-btn">
+                      Structure <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p> Earthquake resistant design & Weather proof structure,promising safety & quality for
+                        generations</p>
+                      <p>Steel-Jindal or equivalent</p>
+                      <p>Cement - ACC or Ultratech or equivalent of 43 or 53 grade </p>
+                      <p>Aggregates - 20mm & 40mm</p>
+                      <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
+                      <p>RCC Design Mix - ACC or Ultratech M25 or As per the structural designer recommendation</p>
+                      <p>Ceiling Height - 12 feet Finished Floor level to Finished Floor level</p>
+                      <p>Antitermite treatment is included as part of the package</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed " type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree"
+                      id="acc-btn">
+                      Kitchen <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseThree" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Indian / Italian Marble for Wall Dado of value upto ₹ 380 per sqft</p>
+                      <p>Kitchen Sink of Kaff / Franke make of value upto ₹ 15,000.</p>
+                      <p>Main sink faucet of value upto ₹ 10000 (Roca / Grohe / Kohler make)</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour"
+                      id="acc-btn">
+                      Bathroom<i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFour" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Bathroom Italian Marble wall Dado of upto 7' height - Value of upto ₹ 500 per sqft</p>
+                      <p>CP fittings of Grohe / Kohler make of value upto ₹ 10 lakhs will be provided for upto 3
+                        bathrooms including accessories upto package area of 3000 sft</p>
+                      <p>Sanitarywares of Grohe / Kohler / American standard make of value upto ₹ 4.5 lakhs will be provided for upto 3
+                        bathrooms. Includes a jaccuzi in Master bathroom</p>
+                      <p>Centralized Energy saving heat pump of value upto ₹ 3 lakhs will be provided</p>
+                      <p>Moisture resistant / Grid false ceiling in bathrooms</p>
+                      <p>Glass partition for shower area to divide the wet area &amp; dry area in all bathrooms
+                      </p>
+                      <p>Motion sensor lighting</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive"
+                      id="acc-btn">
+                      Doors & Windows <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseFive" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Windows - High Precision double glazed sound &amp; weather proof UPVC / wooden windows with
+                        mesh shutters of Eiti or equivalent make</p>
+                      <p>Main Door - High performance Engineered wood imported Burma teak wood door of value upto ₹
+                        1,50,000 including fixtures.</p>
+                      <p>Internal Doors - Membrane doors / Flush Door with Veneer of value upto ₹ 35,000 including
+                        fixtures. Door Frames of imported Ghana Teak Jamb lining.</p>
+                      <p>Bathroom Doors - Louvered teak wood door of 2'6"x7' of value upto ₹ 30000</p>
+                      <p>1 Pooja Room Door - Burma Teak along with Teak frame of value upto ₹ 60,000 including
+                        fixtures
+                        for every 4,000 sft package.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix"
+                      id="acc-btn">
+                      Painting <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseSix" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Interior Painting - JK Putty + Asian Royale Emulsion or equivalent</p>
+                      <p>Exterior Painting - Asian Primer + Apex Ultima Protek Paint or equivalent</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven"
+                      id="acc-btn">
+                      Flooring <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Living, Dining, Other bedrooms including Kitchen Flooring - Marble of value upto ₹ 500 per
+                        sqft
+                      </p>
+                      <p>Master Bedroom &amp; Kids Bedroom - American Oak wooden flooring of value upto ₹ 900 per sqft
+                      </p>
+                      <p>Bathroom flooring - Antiskid tiles / marble of value upto ₹ 500 per sqft</p>
+                      <p>Balcony &amp; Open areas flooring - Antiskid tiles of value upto ₹ 200 per sqft</p>
+                      <p>Staircase flooring - Marble of value upto ₹ 500 per sqft</p>
+                      <p>Parking Tiles - Stamp concrete finish / natural stones of value upto ₹ 150 per sqft</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseEight" aria-expanded="false" aria-controls="flush-collapseEight"
+                      id="acc-btn">
+                      Electrical <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseEight" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>All wiring shall be done with fire proof wires of Finolex silver FR or equivalent.</p>
+                      <p>Switches &amp; Sockets - Legrand Myrius, Schneider Zencelo or GM equivalent</p>
+                      <p>UPS Wiring</p>
+                      <p>1 EV Charging Point</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseNine" aria-expanded="false" aria-controls="flush-collapseNine"
+                      id="acc-btn">
+                      Miscellaneous <i class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseNine" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Overhead tank - RCC tank of 2,500 Ltrs capacity</p>
+                      <p>Underground Sump - 12,000 Ltrs</p>
+                      <p>Staircase Railing - SS (Stainless) Glass Railing of SS 304 grade profiles / MS railing with
+                        wooden hand rail</p>
+                      <p>Window Grills - Basic MS Grill with enamel Paint at ₹ 300 per Sqft</p>
+                      <p>1 Copper gas connection for every dwelling unit of 1,500 sft package area</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTen" aria-expanded="false" aria-controls="flush-collapseTen"
+                      id="acc-btn">
+                      Luxury Indulgences for the Globetrotter <i class="fa-solid fa-plus plus"></i> <i
+                        class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseTen" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Home Automation with Motion Sensor, Appliance control including AC, Kitchen Appliances,
+                        Curtain
+                        control, Mood lighting**</p>
+                      <p>Centralized all weather air conditioning units by Mitsubishi / Carrier / Daikin make</p>
+                    <p>Private temperature controlled all weather lap pool & provision for barbeque</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button acc-btn  collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseEleven" aria-expanded="false" aria-controls="flush-collapseEleven"
+                      id="acc-btn">
+                      Home Automation including safety &amp; security worth INR 7 lakhs <i
+                        class="fa-solid fa-plus plus"></i> <i class="fa-solid fa-minus minus"></i>
+                    </button>
+                  </h2>
+                  <div id="flush-collapseEleven" class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                      <p>Automatic Gate for car parking area</p>
+                      <p>CCTV cameras at all vantage points</p>
+                      <p>False ceiling with recessed coves and cornices</p>
+                      <p>Fire leak and Panic buttons in strategic areas</p>
+                      <p>Intrusion alert automated system</p>
+                      <p>Private Glass see through Elevator of Mitsubishi/Schindler make - worth 10 lakhs</p>
+                      <p>Safety and Security with Biometric and App based Keyless Entry and Exit</p>
+                      <p>Video Door phone with extension to Kitchen, Living/Dining and Master Bedroom</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- 3rd box details Ends -->
+
+      </div>
+        <!-- Terms & conditions -->
+     <div class="d-flex justify-content-end mt-5 pt-5 ">*<a href="" class="anchor">T&C Apply</a></div>
+     <div class="text-center"><a href="" class="anchor-Rarrow rightarrow-hover">COMPARE PACKAGES &nbsp<i class="fa-solid fa-arrow-right "></i></a></div>
+    </div>  
+  </div>
+
+
+  <!-- linking Bootstrap script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+  <!-- swiper script linking from getting started with swiper -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- linking internal JS file -->
+  <script src="./b&b_js.js"></script>
+</body>
+
+</html>

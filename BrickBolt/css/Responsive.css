@@ -1,0 +1,261 @@
+/* Header Starts */
+/* displaying dropdown list when hover on dropdown element screen width strats from 1000px.Below 1000px dropdown list as normal clickable */
+@media only screen and (min-width:990px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown:hover i {
+    transform: rotate(180deg);
+  }
+
+  .navbar-expand-lg .navbar-nav {
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width:990px) {
+  .navbar-toggler {
+    margin-right: 50px;
+  }
+
+  .header-btn {
+    margin-block: 20px;
+    margin-right: 10px;
+    width: 140px;
+  }
+
+  .vertical-line {
+    /* opacity: 0; */
+    display: none;
+  }
+
+  .header-res-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  }
+
+  .wht-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .btn-whatsapp{
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width:540px) {
+  .navbar-toggler {
+    /* margin-left: 220px; */
+    margin-inline: auto;
+  }
+
+  .logoLeft-padding {
+    padding-left: 20px;
+    /* margin-inline: auto; */
+
+  }
+}
+
+
+
+@media only screen and (min-width:1160px) and (max-width:1360px) {
+  .btn-whatsapp {
+    flex-direction: column;
+   
+    gap: 10px;
+  }
+  .vertical-line {
+    /* opacity: 0; */
+    display: none;
+  }
+  .btn-whatsapp .lets-btn{
+    margin-left: -20px;
+  }
+}
+/* Responsive code written by Vishnu Priya */
+@media only screen and (min-width: 992px) and (max-width: 1240px) {
+  .nav-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 70px !important;
+  }
+
+  .btn-whatsapp {
+    display: none !important;
+  }
+
+  .navbar-collapse {
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+
+  .navbar-nav {
+    width: 100% !important;
+    /* max-width: 1300px !important; */
+    flex-grow: 1 !important;
+    column-gap: 20px !important;
+  }
+}
+
+@media only screen and (min-width: 1056px) and (max-width: 1251px) {
+  .navbar-nav {
+    text-wrap: nowrap;
+  }
+
+}
+
+@media only screen and (min-width: 1168px) and (max-width: 1258px) {
+  .navbar-nav {
+    column-gap: 20px !important;
+  }
+
+  .vertical-line {
+    display: none !important;
+  }
+
+  .blore-bg-cr {
+    height: 50px;
+  }
+
+  .btn-whatsapp {
+    flex-wrap: wrap !important;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1080px) {
+  .navbar-nav {
+
+    column-gap: 12px !important;
+  }
+}
+
+@media (min-width:992px) {
+
+  .nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .logoLeft-padding {
+    /* padding-left: 20px !important; */
+
+  }
+
+  .logoLeft-padding img {
+    width: 220px !important;
+  }
+
+  .wht-grid {
+    display: flex;
+    flex-direction: row;
+  }
+}
+@media (max-width:1435px) {
+  .logoLeft-padding {
+    padding-left: 20px !important;
+
+  }
+}
+
+/* Responsive code written by Vishnu Priya */
+
+/* Header Ends */
+
+/* Header Body Starts */
+@media only screen and (max-width:990px) {
+  form {
+    display: none;
+  }
+
+  .header {
+    background-size: 100vw;
+    height: 30vw;
+  }
+}
+
+
+
+/* Header Body Ends */
+
+/* Our Services Responsive Starts */
+@media(max-width:566px) {
+  .ourservice-res {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .ourservice-img {
+    /* width: 250px; */
+    height: 150px;
+  }
+}
+/* Our Services Responsive Ends */
+
+/* HomeConstruction Resposive Starts */
+@media (min-width:992px) {
+  .lp-title .diagnol {
+    position: relative;
+    left: -3px;
+  }
+}
+
+/* HomeConstruction Resposive Ends */
+
+/* Referral Program Starts */
+.sub-container {
+
+  margin-inline: 200px;
+  padding-block: 100px;
+  position: relative;
+}
+
+.referral-img {
+  width: 350px;
+  position: absolute;
+  right: 150px;
+  bottom: 120px;
+}
+
+@media (max-width:1000px) {
+  .sub-container {
+    margin-inline: 0px !important;
+  }
+
+  .sub-container .hire-btn {
+    bottom: 6%;
+    position: absolute;
+  }
+
+  .referral-img {
+    width: 320px;
+    position: relative;
+    right: 30px;
+    bottom: 0;
+  }
+}
+
+@media (min-width:1000px) and (max-width:1490px) {
+  .sub-container {
+    margin-inline: 0px !important;
+  }
+
+  .referral-img {
+    bottom: 50px;
+    left: 450px;
+  }
+}
+
+@media (min-width:1490px) and (max-width:2000px) {
+  .referral-img {
+    bottom: 100px;
+    left: 650px;
+  }
+}
+
+/* Referral Program ends */

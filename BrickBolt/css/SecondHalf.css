@@ -1,0 +1,259 @@
+/* imported Rufina font family font-family: "Rufina", serif; */
+@import url('https://fonts.googleapis.com/css2?family=Rufina:wght@400;700&display=swap');
+/* imported DM-Sans font family   font-family: "DM Sans", sans-serif;*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+
+     *{
+        padding: 0;
+        margin:0;
+        box-sizing: border-box;
+    } 
+body{
+    /* font-family: "Rufina", serif,Arial, Helvetica, sans-serif !important; */
+    overflow-x: hidden;
+}
+/* Increasing screen max-width which is specified by bootstrap */
+/* @media (min-width:2000px)
+{
+  .container{
+    max-width:100px;
+  }
+} */
+
+.inline-padding{
+    padding-inline: 75px;
+}
+/* LuxuryPackages font */
+.dmSans{
+    font-family: "DM Sans", sans-serif;
+  }
+  .roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+  }
+
+h4 {
+    font-size: 6vmin;
+    font-weight: bolder;
+    position: relative;
+    font-family: "Rufina", serif;
+}
+/* sibling selector */
+h4~p{
+    font-size: 1.1rem;
+    font-family: "DM Sans", sans-serif;
+}
+.fs-7{
+    font-size: 14.4px !important;
+}
+img{
+    width:100%;
+    height: 100%;
+}
+.orange-red{
+    color: #F15A29;
+}
+/* anchor tag css styles:luxury Packages sec */
+.anchor,.anchor-Rarrow{
+text-decoration: none;
+color:#F15A29;
+}
+.anchor:hover{
+    text-decoration: underline;
+    color: crimson;
+}
+
+.anchor-Rarrow:hover{
+    text-decoration: none;
+    color: crimson;
+}
+/* ...lp... */
+
+/* Defined for footer sec */
+  .rightarrow-hover:hover i {
+    position: relative;
+    left: 10px;
+  }
+  /* ...footer... */
+.rectangle {
+    clip-path: polygon(100% 0, 100% 28%, 0 100%, 0 75%);
+    height: 60px;
+    width: 50px;
+    background-color: #F15A29;
+    position: relative;
+    top: 60px;
+}
+.diagnol {
+    clip-path: polygon(0 48%, 100% 0%, 100% 53%, 0% 100%);
+    height: 5vmin;
+    width: 3vmin;
+    background-color: #F15A29;
+    display: inline-block;
+    position: absolute;
+    top: 17px;
+    left:-24px;
+}
+
+.diagnol-right{
+    position: relative;
+    top: 0px;
+    left:0px;
+  }  
+
+/* Our Banking Partners CSS Starts*/
+.bank-partners{
+    /* display: flex;
+    justify-content: space-between; */
+    margin: 90px 0 40px 10px ;
+}
+.bank-partners figure {
+    width: 280px;
+    height: 150px;
+}
+/* Our Banking Partners CSS End */
+
+/* Brick&Bolt in the News CSS starts*/
+.slider-wrapper {
+    overflow: hidden;
+    /* max-width: 1200px; */
+    margin: 0 70px 55px;
+}
+.card-item {
+    cursor: pointer;
+    height: 280px;
+    border: 3px solid rgba(255, 0, 0, 0.1);
+    padding: 0 20px;
+}
+.card-item p{
+    font-size: 1rem;
+    font-style: italic;    
+}
+.img-boundary {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 20px;
+}
+.img-boundary img {
+    width: 100%;
+    height: 80%;
+}
+/* Brick&Bolt in the News CSS ends*/
+
+
+/* Hire the best house CSS Starts */
+.milestone-part h5{
+    color: #F15A29;
+    font-size: 1.3rem;
+}
+.milestone-part p{
+    color: #1D1A12;
+    font-size: 1.1rem;
+}
+.hire-left{
+/* padding: 50px 0 80px 0; */
+padding-top: 50px;
+padding-bottom: 180px;
+}
+.hire-btn {
+    clip-path: polygon(100% 0, 100% 69%, 87% 100%, 0% 100%, 0 48%, 0% 0%);
+    color: white;
+    background-color:  #F15A29;
+    border: none;
+    font-weight: bolder;
+    font-size: 1.1rem;
+    padding: 14px 40px;            
+}
+.hire-bg-color{
+    background-image: url("../assets/ic-letbuild.svg");
+    background-repeat: no-repeat;
+    background-position:right  bottom;
+    background-size:50vmax ;   /* it makes bg- img responsive*/        
+    background-color: rgba(255, 0, 0, 0.05);
+    width: 100%;     
+       }   
+/* Hire the best house CSS ends */
+
+/* above FAQ CSS starts */
+.faq-contennt{
+    color:#1D1A12;
+    font-family: sans-serif;
+    margin-top:60px;
+    margin-bottom: 50px;
+}
+/* above FAQ CSS ends */
+
+/* faq CSS Starts */
+.faq-fontfamily{
+    font-family: "DM Sans", sans-serif;
+  }
+ h2 .faq-heading{
+  background-color: rgba(128, 128, 128, 0.06) !important;
+  font-size: 15px;  
+
+ }
+ .faq-content{
+  color: rgba(0, 0, 0, 0.65); 
+  font-size: 15px;  
+  padding-left: 45px;
+ }
+ /*making Default right arrow button invisible */
+ .accordion-button::after{
+  content: none!important;
+ }
+/* Customized Style for the font awsome arrow icon */
+.accordion-button .arrow-icon {
+  transition: transform 0.3s ease;  
+  margin-right: 15px; /* Add space between arrow and text */
+
+}
+/* Rotate arrow when the accordion is expanded */
+.accordion-button:not(.collapsed) .arrow-icon {
+  transform: rotate(90deg); /* Rotate 90 degrees to indicate it's open */
+}
+.accordion-button:not(.collapsed){
+  color: #F15A29;
+  /* Removing border-bottom of button when not collapsed */
+  box-shadow: none;
+}
+ .accordion-button:focus{
+  box-shadow: none;  
+ }
+ /* faq CSS Ends */
+
+/* footer css starts */
+footer{
+    /* font-family: "DM Sans", sans-serif; */
+    font-family:  sans-serif,Arial;
+}
+  .appstore-img {
+    width: 45%;
+  }
+ .div-first-heading{
+  font-size: 1rem;
+  font-weight: 600;
+ }
+ .div-content{
+  font-size: 0.9rem;
+  /* text-align: justify; */
+  line-height: 20px;
+  margin-bottom: 1.5rem;
+
+ }
+ .div-second-heading{
+  font-size: 0.9rem;
+  font-weight: 800;
+ }
+ /* footer css ends */
+  
+ 
+ .accordion  .acc-btn:focus {
+    box-shadow:  none !important;
+    /* background-color: red !important; */
+    
+    /* border: 1px solid white !important; Keep the border red on focus */
+  
+}
+
+
