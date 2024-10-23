@@ -235,7 +235,7 @@ form{
 }
 .Ourprojects-card-item {
     /* height: 310px; */
-    height: 70vh;
+    /* height: 70vh; */
     /* width:400px; */
     box-shadow: 0 0 5px gray;
     border: 1px solid rgba(128, 128, 128, 0.221);    
@@ -306,18 +306,20 @@ form{
 .swiper-button-next:after, .swiper-rtl .swiper-button-prev:after{
     content: "" !important;
 }
-.swiper-button-prev{
+/* Positioning prev & next circle arrow buttons statrs */
+.ourprojects-slider-wrapper .swiper-button-prev{
     position: absolute;
     left: 18px;
     top: 160px !important;       
    
          }
-.swiper-button-next{
+.ourprojects-slider-wrapper .swiper-button-next{
     position: absolute;
     right: 18px;
     top: 160px;
-
 }
+/* Positioning prev & next circle arrow buttons statrs */
+
 /* Our Projects CSS ends */
 
 /* Home Construction CSS Starts */

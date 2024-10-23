@@ -12,6 +12,7 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- linking internal Css file -->
+    <link rel="stylesheet" href="./css/FirstHalf.css">
     <link rel="stylesheet" href="./css/SecondHalf.css">
     <style>
         /* PENDINGS.....Dropdown JS functionalities & accordian last button JS functionalities  */
@@ -57,10 +58,12 @@
             padding: 10px;
             cursor: pointer;
         }
+
         div[selected] {
             background-color: silver !important;
 
         }
+
         .option:hover {
             background-color: silver !important;
             /* color: red !important; */
@@ -154,22 +157,37 @@
             background-color: transparent;
         }
 
+        /* Positioning prev & next circle arrow buttons statrs */
+.homeConstruction-slider-wrapper .swiper-button-prev{
+    position: absolute;
+    left: 80px;
+    top: 500px !important;      
+         }
+.homeConstruction-slider-wrapper .swiper-button-next{
+    position: absolute;
+    right: 80px;
+    top: 500px;
+}
+/* Positioning prev & next circle arrow buttons statrs */
+
         /* Responsive */
         @media (min-width:992px) {
             .lp-title .diagnol {
                 position: relative;
                 left: -3px;
             }
+
             /* #swiper-cont{
                 display:none !important;
             } */
         }
 
-        @media (max-width:576px){
-            #swiper-cont{
+        @media (max-width:576px) {
+            #swiper-cont {
                 display: block;
             }
         }
+
         /* Debugging FRO: To overwrite predefined class properties */
         /* .accordion-button:focus { */
         /* background-color: transparent !important; Keep the background transparent on focus */
@@ -208,643 +226,753 @@
                     </span>
                 </p>
             </div>
+            <div class="swiper">
+                <div class="homeConstruction-slider-wrapper ">
+                    <!-- Making boxes flex and applying swiper-wrapper properties -->
+                    <div class="d-flex justify-content-between  lp-font mt-5 swiper-wrapper " id="swiper-cont">
+                        <!-- 1st box details start -->
+                        <section class="swiper-slide">
+                            <div class="card " style="width: 26rem;border:0">
+                                <div class="card-body ">
+                                    <h5 class="card-title lp-card-title">&nbsp Basic Package- 1,810/sq.ft <span
+                                            class="small-text">(Incl.
+                                            GST)</span> </h5>
+                                    <!-- Accordian items Starts -->
+                                    <div class="accordion accordion-flush mx-4 " id="accordionFlushExample2">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn collapsed  px-0" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                    aria-expanded="false" aria-controls="flush-collapseOne">
+                                                    Design & Drawings <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus" style="padding-left:200px;"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p> Architectural Layout | 2D</p>
+                                                    <p>Basic Elevation</p>
+                                                    <p>Structural Design</p>
+                                                    <p>3D Elevation</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed  " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                    aria-expanded="false" aria-controls="flush-collapseTwo"
+                                                    id="acc-btn">
+                                                    Structure <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>Steel- Sunvik or Prime Gold or Kamadhenu or equivalent</p>
+                                                    <p>Cement - Dalmia, Bharat or equivalent of 43 or 53 grade </p>
+                                                    <p>Aggregates - 20mm & 40mm</p>
+                                                    <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
+                                                    <p>RCC Design Mix - M20 or As per the structural designer
+                                                        recommendation</p>
+                                                    <p>Ceiling Height - 10 feet (Finished Floor level to Finished Floor
+                                                        level)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                                    aria-expanded="false" aria-controls="flush-collapseThree"
+                                                    id="acc-btn">
+                                                    Kitchen <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>Ceramic Wall Dado - upto Rs.40 per Sqft</p>
+                                                    <p>Main Sink Faucet - upto Rs.1300</p>
+                                                    <p>Any other Faucet or Accessories - ISI Marked</p>
+                                                    <p>Kitchen Sink - stainless steel of single sink make worth Rs.
+                                                        3,000.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
 
-            <!-- Making boxes flex -->
-            <div class="d-flex justify-content-between  lp-font mt-5 " id="swiper-cont">
-                <!-- 1st box details start -->
-                <section>
-                    <div class="card " style="width: 26rem;border:0">
-                        <div class="card-body ">
-                            <h5 class="card-title lp-card-title">&nbsp Basic Package- 1,810/sq.ft <span
-                                    class="small-text">(Incl.
-                                    GST)</span> </h5>
-                            <!-- Accordian items Starts -->
-                            <div class="accordion accordion-flush mx-4 " id="accordionFlushExample2">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn collapsed  px-0" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                            Design & Drawings <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus" style="padding-left:200px;"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p> Architectural Layout | 2D</p>
-                                            <p>Basic Elevation</p>
-                                            <p>Structural Design</p>
-                                            <p>3D Elevation</p>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
+                                                    aria-expanded="false" aria-controls="flush-collapseFour"
+                                                    id="acc-btn">
+                                                    Bathroom<i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>Ceramic Wall Dado upto 7' height - Upto Rs.40 per Sqft</p>
+                                                    <p>Sanitarywares &amp; CP fittings upto Rs. 30,000 per 1000 Sqft of
+                                                        Cera
+                                                        make</p>
+                                                    <p>CPVC Pipe - APL Apollo or Equivalent</p>
+                                                    <p>Bathroom doors - Waterproof flush doors or WPC</p>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed  " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                            aria-expanded="false" aria-controls="flush-collapseTwo" id="acc-btn">
-                                            Structure <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>Steel- Sunvik or Prime Gold or Kamadhenu or equivalent</p>
-                                            <p>Cement - Dalmia, Bharat or equivalent of 43 or 53 grade </p>
-                                            <p>Aggregates - 20mm & 40mm</p>
-                                            <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
-                                            <p>RCC Design Mix - M20 or As per the structural designer
-                                                recommendation</p>
-                                            <p>Ceiling Height - 10 feet (Finished Floor level to Finished Floor level)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                            aria-expanded="false" aria-controls="flush-collapseThree" id="acc-btn">
-                                            Kitchen <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>Ceramic Wall Dado - upto Rs.40 per Sqft</p>
-                                            <p>Main Sink Faucet - upto Rs.1300</p>
-                                            <p>Any other Faucet or Accessories - ISI Marked</p>
-                                            <p>Kitchen Sink - stainless steel of single sink make worth Rs. 3,000.</p>
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
-                                            aria-expanded="false" aria-controls="flush-collapseFour" id="acc-btn">
-                                            Bathroom<i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>Ceramic Wall Dado upto 7' height - Upto Rs.40 per Sqft</p>
-                                            <p>Sanitarywares &amp; CP fittings upto Rs. 30,000 per 1000 Sqft of Cera
-                                                make</p>
-                                            <p>CPVC Pipe - APL Apollo or Equivalent</p>
-                                            <p>Bathroom doors - Waterproof flush doors or WPC</p>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
+                                                    aria-expanded="false" aria-controls="flush-collapseFive"
+                                                    id="acc-btn">
+                                                    Doors & Windows <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>Windows - Aluminium Windows with glass shutters and mesh shutters
+                                                        (3
+                                                        track with 1 mesh) of Jindal Profiles</p>
+                                                    <p>Main Door - Flush Door with Veneer. Sal wood frame of 5 inch by 3
+                                                        inch,
+                                                        worth Rs.20,000 including fixtures.</p>
+                                                    <p>Internal Doors - Membrane doors / Flush Door with Laminates upto
+                                                        Rs.11,000 including fixtures. Door Frames of Sal Wood 4 inch by
+                                                        2.5
+                                                        inch.</p>
+                                                </div>
+                                            </div>
                                         </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
+                                                    aria-expanded="false" aria-controls="flush-collapseSix"
+                                                    id="acc-btn">
+                                                    Painting <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>Interior Painting - JK Putty + Tractor Emulsion or equivalent</p>
+                                                    <p>Exterior Painting - Asian Primer + Ace Exterior emulsion Paint or
+                                                        equivalent
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
+                                                    aria-expanded="false" aria-controls="flush-collapseSeven"
+                                                    id="acc-btn">
+                                                    Flooring <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>Living &amp; Dining Flooring - Tiles of value upto Rs.50 per sqft
+                                                    </p>
+                                                    <p>Rooms &amp; Kitchen Flooring - Tiles of value upto Rs.50 per sqft
+                                                    </p>
+                                                    <p>Balcony and Open Areas Flooring - Anti-skid tiles of value upto
+                                                        Rs.40
+                                                        per
+                                                        sqft</p>
+                                                    <p>Staircase Flooring - Sadarahalli Granite of value upto ₹ 70 per
+                                                        sqft
+                                                    </p>
+                                                    <p>Parking Tiles - Anti-skid tiles of value upto ₹ 40 per sqft</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
+                                                    aria-expanded="false" aria-controls="flush-collapseEight"
+                                                    id="acc-btn">
+                                                    Electrical <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>All wiring shall be done with fire proof wires of Finolex silver
+                                                        FR
+                                                        or
+                                                        equivalent.</p>
+                                                    <p>Switches &amp; Sockets - Legrand Allzy or equivalent
+                                                        equivalent</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
+                                                    aria-expanded="false" aria-controls="flush-collapseNine"
+                                                    id="acc-btn">
+                                                    Miscellaneous <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample2">
+                                                <div class="accordion-body">
+                                                    <p>Overhead Tank - Double Layered tank of 1000 Ltrs of Apollo make
+                                                    </p>
+                                                    <p>Underground Sump - 4000 Ltrs</p>
+                                                    <p>Staircase Railing - MS railing </p> wooden hand rail</p>
+                                                    <p>Window Grills - Basic MS Grill with enamel Paint at Rs. 195 per
+                                                        Sqft
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <hr class="mt-0" style="color: gray;"> -->
+                                    </div>
+                                    <hr class="mt-1" style="color: gray;">
+                                    <!--Accordian LET's BUILD Down Button -->
+                                    <div class="text-center">
+                                        <p class="mt-3 mb-0 fs-7">Get in touch with us</p>
+                                        <button class="hire-btn rightarrow-hover mb-4">LET'S BUILD <i
+                                                class="fa-solid fa-arrow-right arrow-right "></i></button>
+
                                     </div>
                                 </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
-                                            aria-expanded="false" aria-controls="flush-collapseFive" id="acc-btn">
-                                            Doors & Windows <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseFive" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>Windows - Aluminium Windows with glass shutters and mesh shutters (3
-                                                track with 1 mesh) of Jindal Profiles</p>
-                                            <p>Main Door - Flush Door with Veneer. Sal wood frame of 5 inch by 3 inch,
-                                                worth Rs.20,000 including fixtures.</p>
-                                            <p>Internal Doors - Membrane doors / Flush Door with Laminates upto
-                                                Rs.11,000 including fixtures. Door Frames of Sal Wood 4 inch by 2.5
-                                                inch.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
-                                            aria-expanded="false" aria-controls="flush-collapseSix" id="acc-btn">
-                                            Painting <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSix" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>Interior Painting - JK Putty + Tractor Emulsion or equivalent</p>
-                                            <p>Exterior Painting - Asian Primer + Ace Exterior emulsion Paint or
-                                                equivalent
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
-                                            aria-expanded="false" aria-controls="flush-collapseSeven" id="acc-btn">
-                                            Flooring <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSeven" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>Living &amp; Dining Flooring - Tiles of value upto Rs.50 per sqft</p>
-                                            <p>Rooms &amp; Kitchen Flooring - Tiles of value upto Rs.50 per sqft</p>
-                                            <p>Balcony and Open Areas Flooring - Anti-skid tiles of value upto Rs.40 per
-                                                sqft</p>
-                                            <p>Staircase Flooring - Sadarahalli Granite of value upto ₹ 70 per sqft</p>
-                                            <p>Parking Tiles - Anti-skid tiles of value upto ₹ 40 per sqft</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
-                                            aria-expanded="false" aria-controls="flush-collapseEight" id="acc-btn">
-                                            Electrical <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseEight" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>All wiring shall be done with fire proof wires of Finolex silver FR or
-                                                equivalent.</p>
-                                            <p>Switches &amp; Sockets - Legrand Allzy or equivalent
-                                                equivalent</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
-                                            aria-expanded="false" aria-controls="flush-collapseNine" id="acc-btn">
-                                            Miscellaneous <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseNine" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample2">
-                                        <div class="accordion-body">
-                                            <p>Overhead Tank - Double Layered tank of 1000 Ltrs of Apollo make</p>
-                                            <p>Underground Sump - 4000 Ltrs</p>
-                                            <p>Staircase Railing - MS railing </p> wooden hand rail</p>
-                                            <p>Window Grills - Basic MS Grill with enamel Paint at Rs. 195 per Sqft</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <hr class="mt-0" style="color: gray;"> -->
                             </div>
-                            <hr class="mt-1" style="color: gray;">
-                            <!--Accordian LET's BUILD Down Button -->
-                            <div class="text-center">
-                                <p class="mt-3 mb-0 fs-7">Get in touch with us</p>
-                                <button class="hire-btn rightarrow-hover mb-4">LET'S BUILD <i
-                                        class="fa-solid fa-arrow-right arrow-right "></i></button>
+                        </section>
+                        <!-- 1st box details Ends -->
 
+                        <!-- 2nd box details start -->
+                        <section class="swiper-slide">
+                            <div class="card " style="width: 26rem;border:0">
+                                <div class="card-body ">
+                                    <h5 class="card-title lp-card-title">&nbsp Classic Package- 1,940/sq.ft <span
+                                            class="small-text">(Incl.
+                                            GST)</span> </h5>
+                                    <!-- Accordian items Starts -->
+                                    <div class="accordion accordion-flush mx-4 " id="accordionFlushExample3">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn collapsed  px-0" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                    aria-expanded="false" aria-controls="flush-collapseOne">
+                                                    Design & Drawings <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus" style="padding-left:200px;"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p> Architectural Layout | 2D</p>
+                                                    <p>Basic Elevation</p>
+                                                    <p>Structural Design</p>
+                                                    <p>3D Elevation</p>
+                                                    <p>Electrical Drawings</p>
+                                                    <p>Plumbing Drawings</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed  " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                    aria-expanded="false" aria-controls="flush-collapseTwo"
+                                                    id="acc-btn">
+                                                    Structure <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>Steel- Jindal or equivalent</p>
+                                                    <p>Cement - Dalmia, Bharat or equivalent of 43 or 53 grade </p>
+                                                    <p>Aggregates - 20mm & 40mm</p>
+                                                    <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
+                                                    <p>RCC Design Mix - M20 or As per the structural designer
+                                                        recommendation</p>
+                                                    <p>Ceiling Height - 10 feet (Finished Floor level to Finished Floor
+                                                        level)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                                    aria-expanded="false" aria-controls="flush-collapseThree"
+                                                    id="acc-btn">
+                                                    Kitchen <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>Ceramic Wall Dado - upto Rs.60 per Sqft</p>
+                                                    <p>Main Sink Faucet - upto Rs.2000</p>
+                                                    <p>Any other Faucet or Accessories - ISI Marked</p>
+                                                    <p>Kitchen Sink - stainless steel of single sink make worth Rs.
+                                                        6,000.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
+                                                    aria-expanded="false" aria-controls="flush-collapseFour"
+                                                    id="acc-btn">
+                                                    Bathroom<i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>Ceramic Wall Dado upto 7' height - Upto Rs.60 per Sqft</p>
+                                                    <p>Sanitarywares &amp; CP fittings upto Rs. 50,000 per 1000 Sqft of
+                                                        Hindware or Parryware
+                                                        make</p>
+                                                    <p>CPVC Pipe - APL Apollo or Equivalent</p>
+                                                    <p>Bathroom doors - Waterproof flush doors or WPC</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
+                                                    aria-expanded="false" aria-controls="flush-collapseFive"
+                                                    id="acc-btn">
+                                                    Doors & Windows <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>Windows - UPVC Windows with glass and mesh shutters (3 track with
+                                                        1
+                                                        mesh) of Lesso Eiti or equivalent make</p>
+                                                    <p>Main Door - Teak Door With Teak frame of 5 inch by 3 inch, worth
+                                                        Rs.30,000 including fixtures.</p>
+                                                    <p>Internal Doors - Membrane doors / Flush Door with Laminates upto
+                                                        Rs.11,000 including fixtures. Door Frames of Sal Wood 4 inch by
+                                                        2.5
+                                                        inch.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
+                                                    aria-expanded="false" aria-controls="flush-collapseSix"
+                                                    id="acc-btn">
+                                                    Painting <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>Interior Painting - JK Putty + Shyne Tractor Emulsion or
+                                                        equivalent
+                                                    </p>
+                                                    <p>Exterior Painting - Asian Primer + Apex Exterior emulsion Paint
+                                                        or
+                                                        equivalent
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
+                                                    aria-expanded="false" aria-controls="flush-collapseSeven"
+                                                    id="acc-btn">
+                                                    Flooring <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>Living &amp; Dining Flooring - Tiles or Granite of value upto
+                                                        Rs.100
+                                                        per sqft</p>
+                                                    <p>Rooms &amp; Kitchen Flooring - Tiles of value upto Rs.80 per sqft
+                                                    </p>
+                                                    <p>Balcony and Open Areas Flooring - Anti-skid tiles of value upto
+                                                        Rs.60
+                                                        per
+                                                        sqft</p>
+                                                    <p>Staircase Flooring - Sadarahalli Granite of value upto ₹ 80 per
+                                                        sqft
+                                                    </p>
+                                                    <p>Parking Tiles - Anti-skid tiles of value upto ₹ 50 per sqft</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
+                                                    aria-expanded="false" aria-controls="flush-collapseEight"
+                                                    id="acc-btn">
+                                                    Electrical <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>All wiring shall be done with fire proof wires of Finolex silver
+                                                        FR
+                                                        or
+                                                        equivalent.</p>
+                                                    <p>Switches &amp; Sockets - Legrand Lyncus or Schneider Liva or
+                                                        equivalent</p>
+                                                    <p>UPS Wiring Provision</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
+                                                    aria-expanded="false" aria-controls="flush-collapseNine"
+                                                    id="acc-btn">
+                                                    Miscellaneous <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample3">
+                                                <div class="accordion-body">
+                                                    <p>Overhead Tank - Double Layered tank of 1500 Ltrs of Apollo make
+                                                    </p>
+                                                    <p>Underground Sump - 6000 Ltrs</p>
+                                                    <p>Staircase Railing - MS railing </p> wooden hand rail</p>
+                                                    <p>Window Grills - Basic MS Grill with enamel Paint at Rs. 195 per
+                                                        Sqft
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <hr class="mt-1" style="color: gray;">
+                                    <!--Accordian LET's BUILD Down Button -->
+                                    <div class="text-center">
+                                        <p class="mt-3 mb-0 fs-7">Get in touch with us</p>
+                                        <button class="hire-btn rightarrow-hover mb-4">LET'S BUILD <i
+                                                class="fa-solid fa-arrow-right arrow-right "></i></button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </section>
+                        <!-- 2nd box details Ends -->
+
+                        <!-- 3rd box details start -->
+                        <section class="swiper-slide">
+                            <div class="card " style="width: 26rem;border:0">
+                                <div class="card-body ">
+                                    <h5 class="card-title lp-card-title">&nbsp Premium Package- 2,250/sq.ft <span
+                                            class="small-text">(Incl.
+                                            GST)</span> </h5>
+                                    <!-- Accordian items Starts -->
+                                    <div class="accordion accordion-flush mx-4 " id="accordionFlushExample4">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn collapsed  px-0" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
+                                                    aria-expanded="false" aria-controls="flush-collapseOne">
+                                                    Design & Drawings <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus" style="padding-left:200px;"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseOne" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p> Architectural Layout | 2D</p>
+                                                    <p>Basic Elevation</p>
+                                                    <p>Structural Design</p>
+                                                    <p>3D Elevation</p>
+                                                    <p>Electrical Drawings</p>
+                                                    <p>Plumbing Drawings</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed  " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
+                                                    aria-expanded="false" aria-controls="flush-collapseTwo"
+                                                    id="acc-btn">
+                                                    Structure <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>Steel- Jindal or equivalent</p>
+                                                    <p>Cement - ACC or Ultratech or equivalent of 43 or 53 grade </p>
+                                                    <p>Aggregates - 20mm & 40mm</p>
+                                                    <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
+                                                    <p>RCC Design Mix - ACC or Ultratech M20 / M25 or As per the
+                                                        structural
+                                                        designer
+                                                        recommendation</p>
+                                                    <p>Ceiling Height - 10 feet (Finished Floor level to Finished Floor
+                                                        level)
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
+                                                    aria-expanded="false" aria-controls="flush-collapseThree"
+                                                    id="acc-btn">
+                                                    Kitchen <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseThree" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>Ceramic Wall Dado - upto Rs.80 per Sqft</p>
+                                                    <p>Main Sink Faucet - upto Rs.3500</p>
+                                                    <p>Any other Faucet or Accessories - ISI Marked</p>
+                                                    <p>Kitchen Sink of Stainless Steel or granite Finish worth Rs.
+                                                        8,000(Futura, Carysil)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
+                                                    aria-expanded="false" aria-controls="flush-collapseFour"
+                                                    id="acc-btn">
+                                                    Bathroom<i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseFour" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>Ceramic Wall Dado upto 7' height - Upto Rs.80 per Sqft</p>
+                                                    <p>Sanitarywares &amp; CP fittings upto Rs. 70,000 per 1000 Sqft of
+                                                        Jaquar
+                                                        make</p>
+                                                    <p>CPVC Pipe - APL Apollo or Equivalent</p>
+                                                    <p>Bathroom doors - Waterproof flush doors or WPC</p>
+                                                    <p>Mirror. Soap Dish, Towel rail - Worth Rs. 7000 till 1000 ft of
+                                                        Construction</p>
+                                                    <p>Solar water heater provision</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed " type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
+                                                    aria-expanded="false" aria-controls="flush-collapseFive"
+                                                    id="acc-btn">
+                                                    Doors & Windows <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseFive" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>Windows - UPVC Windows with glass and mesh shutters (3 track with
+                                                        1
+                                                        mesh) of Prominance or NCL Veka or equivalent make</p>
+                                                    <p>Main Door - Teak Door With Teak frame of 5 inch by 3.5 inch,
+                                                        worth
+                                                        Rs.40,000 including fixtures.</p>
+                                                    <p>Internal Doors - Membrane doors / Flush Door with Laminates upto
+                                                        upto
+                                                        Rs.13,000 including fixtures. Door Frames of Sal Wood 4 inch by
+                                                        3
+                                                        inch.</p>
+                                                    <p>1 Pooja Room Door - Burma Teak along with Teak frame of 5inch by
+                                                        2.5
+                                                        inch, worth Rs. 28,000 for every 2,000 sft package area</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
+                                                    aria-expanded="false" aria-controls="flush-collapseSix"
+                                                    id="acc-btn">
+                                                    Painting <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseSix" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>Interior Painting - JK Putty + Apcolite Premium Emulsion or
+                                                        equivalent</p>
+                                                    <p>Exterior Painting - Asian Primer + Apex Exterior Emulsion Paint
+                                                        or
+                                                        equivalent
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
+                                                    aria-expanded="false" aria-controls="flush-collapseSeven"
+                                                    id="acc-btn">
+                                                    Flooring <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>Living &amp; Dining Flooring - Tiles or Granite or Marble of
+                                                        value
+                                                        upto Rs.140 per sqft</p>
+                                                    <p>Rooms &amp; Kitchen Flooring - Tiles or Granite or Marble of
+                                                        value
+                                                        upto Rs.120 per sqft</p>
+                                                    <p>Balcony and Open Areas Flooring - Anti-skid tiles of value upto
+                                                        Rs.80
+                                                        per
+                                                        sqft</p>
+                                                    <p>Staircase Flooring - Sadarahalli Granite of value upto ₹ 110 per
+                                                        sqft
+                                                    </p>
+                                                    <p>Parking Tiles - Anti-skid tiles of value upto ₹ 70 per sqft</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
+                                                    aria-expanded="false" aria-controls="flush-collapseEight"
+                                                    id="acc-btn">
+                                                    Electrical <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>All wiring shall be done with fire proof wires of Finolex silver
+                                                        FR
+                                                        or
+                                                        equivalent.</p>
+                                                    <p>Switches &amp; Sockets - Legrand Mylinc or
+                                                        equivalent</p>
+                                                    <p>UPS Wiring Provision</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button acc-btn  collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
+                                                    aria-expanded="false" aria-controls="flush-collapseNine"
+                                                    id="acc-btn">
+                                                    Miscellaneous <i class="fa-solid fa-plus plus"></i> <i
+                                                        class="fa-solid fa-minus minus"></i>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionFlushExample4">
+                                                <div class="accordion-body">
+                                                    <p>A Sintex Double layered overhead tank of - 2000L shall be
+                                                        provided.
+                                                        Any Additional capacity shall be chargeable at INR 9 per L.
+                                                        Platform
+                                                        for the OHT shall be charged additional based on the design and
+                                                        specifications</p>
+                                                    <p>Underground Sump - 7000 Ltrs</p>
+                                                    <p>Staircase Railing - SS(Stainless) Railing of SS 304 grade
+                                                        profiles
+                                                    </p>
+                                                    <p>Window Grills - Basic MS Grill with enamel Paint at Rs. 195 per
+                                                        Sqft
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <hr class="mt-0" style="color: gray;"> -->
+                                    </div>
+                                    <hr class="mt-1" style="color: gray;">
+                                    <!--Accordian LET's BUILD Down Button -->
+                                    <div class="text-center">
+                                        <p class="mt-3 mb-0 fs-7">Get in touch with us</p>
+                                        <button class="hire-btn rightarrow-hover mb-4">LET'S BUILD <i
+                                                class="fa-solid fa-arrow-right arrow-right "></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- 3rd box details Ends -->
+
                     </div>
-                </section>
-                <!-- 1st box details Ends -->
+                    <div class="swiper-button-prev"><i class="fa-solid fa-arrow-left circle"></i></div>
+                    <div class="swiper-button-next"><i class="fa-solid fa-arrow-right circle"></i></div>
 
-                <!-- 2nd box details start -->
-                <section>
-                    <div class="card " style="width: 26rem;border:0">
-                        <div class="card-body ">
-                            <h5 class="card-title lp-card-title">&nbsp Classic Package- 1,940/sq.ft <span
-                                    class="small-text">(Incl.
-                                    GST)</span> </h5>
-                            <!-- Accordian items Starts -->
-                            <div class="accordion accordion-flush mx-4 " id="accordionFlushExample3">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn collapsed  px-0" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                            Design & Drawings <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus" style="padding-left:200px;"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p> Architectural Layout | 2D</p>
-                                            <p>Basic Elevation</p>
-                                            <p>Structural Design</p>
-                                            <p>3D Elevation</p>
-                                            <p>Electrical Drawings</p>
-                                            <p>Plumbing Drawings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed  " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                            aria-expanded="false" aria-controls="flush-collapseTwo" id="acc-btn">
-                                            Structure <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p>Steel- Jindal or equivalent</p>
-                                            <p>Cement - Dalmia, Bharat or equivalent of 43 or 53 grade </p>
-                                            <p>Aggregates - 20mm & 40mm</p>
-                                            <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
-                                            <p>RCC Design Mix - M20 or As per the structural designer
-                                                recommendation</p>
-                                            <p>Ceiling Height - 10 feet (Finished Floor level to Finished Floor level)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                            aria-expanded="false" aria-controls="flush-collapseThree" id="acc-btn">
-                                            Kitchen <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p>Ceramic Wall Dado - upto Rs.60 per Sqft</p>
-                                            <p>Main Sink Faucet - upto Rs.2000</p>
-                                            <p>Any other Faucet or Accessories - ISI Marked</p>
-                                            <p>Kitchen Sink - stainless steel of single sink make worth Rs. 6,000.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
-                                            aria-expanded="false" aria-controls="flush-collapseFour" id="acc-btn">
-                                            Bathroom<i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p>Ceramic Wall Dado upto 7' height - Upto Rs.60 per Sqft</p>
-                                            <p>Sanitarywares &amp; CP fittings upto Rs. 50,000 per 1000 Sqft of Hindware or Parryware 
-                                                make</p>
-                                            <p>CPVC Pipe - APL Apollo or Equivalent</p>
-                                            <p>Bathroom doors - Waterproof flush doors or WPC</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
-                                            aria-expanded="false" aria-controls="flush-collapseFive" id="acc-btn">
-                                            Doors & Windows <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseFive" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                           <p>Windows - UPVC Windows with glass and mesh shutters (3 track with 1 mesh) of Lesso Eiti or equivalent make</p>
-                                           <p>Main Door - Teak Door With Teak frame of 5 inch by 3 inch, worth Rs.30,000 including fixtures.</p>
-                                        <p>Internal Doors - Membrane doors / Flush Door with Laminates upto Rs.11,000 including fixtures. Door Frames of Sal Wood 4 inch by 2.5 inch.</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
-                                            aria-expanded="false" aria-controls="flush-collapseSix" id="acc-btn">
-                                            Painting <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSix" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p>Interior Painting - JK Putty + Shyne Tractor Emulsion or equivalent</p>
-                                            <p>Exterior Painting - Asian Primer + Apex Exterior emulsion Paint or
-                                                equivalent
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
-                                            aria-expanded="false" aria-controls="flush-collapseSeven" id="acc-btn">
-                                            Flooring <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSeven" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p>Living &amp; Dining Flooring - Tiles or Granite of value upto Rs.100 per sqft</p>
-                                            <p>Rooms &amp; Kitchen Flooring - Tiles of value upto Rs.80 per sqft</p>
-                                            <p>Balcony and Open Areas Flooring - Anti-skid tiles of value upto Rs.60 per
-                                                sqft</p>
-                                            <p>Staircase Flooring - Sadarahalli Granite of value upto ₹ 80 per sqft</p>
-                                            <p>Parking Tiles - Anti-skid tiles of value upto ₹ 50 per sqft</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
-                                            aria-expanded="false" aria-controls="flush-collapseEight" id="acc-btn">
-                                            Electrical <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseEight" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p>All wiring shall be done with fire proof wires of Finolex silver FR or
-                                                equivalent.</p>
-                                            <p>Switches &amp; Sockets - Legrand Lyncus or Schneider Liva or 
-                                                equivalent</p>
-                                                <p>UPS Wiring Provision</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
-                                            aria-expanded="false" aria-controls="flush-collapseNine" id="acc-btn">
-                                            Miscellaneous <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseNine" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample3">
-                                        <div class="accordion-body">
-                                            <p>Overhead Tank - Double Layered tank of 1500 Ltrs of Apollo make</p>
-                                            <p>Underground Sump - 6000 Ltrs</p>
-                                            <p>Staircase Railing - MS railing </p> wooden hand rail</p>
-                                            <p>Window Grills - Basic MS Grill with enamel Paint at Rs. 195 per Sqft</p>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <hr class="mt-1" style="color: gray;">
-                            <!--Accordian LET's BUILD Down Button -->
-                            <div class="text-center">
-                                <p class="mt-3 mb-0 fs-7">Get in touch with us</p>
-                                <button class="hire-btn rightarrow-hover mb-4">LET'S BUILD <i
-                                        class="fa-solid fa-arrow-right arrow-right "></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- 2nd box details Ends -->
-
-                  <!-- 3rd box details start -->
-                <section>
-                    <div class="card " style="width: 26rem;border:0">
-                        <div class="card-body ">
-                            <h5 class="card-title lp-card-title">&nbsp Premium Package- 2,250/sq.ft <span
-                                    class="small-text">(Incl.
-                                    GST)</span> </h5>
-                            <!-- Accordian items Starts -->
-                            <div class="accordion accordion-flush mx-4 " id="accordionFlushExample4">
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn collapsed  px-0" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseOne"
-                                            aria-expanded="false" aria-controls="flush-collapseOne">
-                                            Design & Drawings <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus" style="padding-left:200px;"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseOne" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p> Architectural Layout | 2D</p>
-                                            <p>Basic Elevation</p>
-                                            <p>Structural Design</p>
-                                            <p>3D Elevation</p>
-                                            <p>Electrical Drawings</p>
-                                            <p>Plumbing Drawings</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed  " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo"
-                                            aria-expanded="false" aria-controls="flush-collapseTwo" id="acc-btn">
-                                            Structure <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseTwo" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p>Steel- Jindal or equivalent</p>
-                                            <p>Cement - ACC or Ultratech or equivalent of 43 or 53 grade </p>
-                                            <p>Aggregates - 20mm & 40mm</p>
-                                            <p>Blocks - Standard Solid Concrete blocks. 6 inch & 4 inch</p>
-                                            <p>RCC Design Mix - ACC or Ultratech M20 / M25 or As per the structural designer
-                                                recommendation</p>
-                                            <p>Ceiling Height - 10 feet (Finished Floor level to Finished Floor level)
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseThree"
-                                            aria-expanded="false" aria-controls="flush-collapseThree" id="acc-btn">
-                                            Kitchen <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p>Ceramic Wall Dado - upto Rs.80 per Sqft</p>
-                                            <p>Main Sink Faucet - upto Rs.3500</p>
-                                            <p>Any other Faucet or Accessories - ISI Marked</p>
-                                            <p>Kitchen Sink of Stainless Steel or granite Finish worth Rs. 8,000(Futura, Carysil)</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFour"
-                                            aria-expanded="false" aria-controls="flush-collapseFour" id="acc-btn">
-                                            Bathroom<i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseFour" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p>Ceramic Wall Dado upto 7' height - Upto Rs.80 per Sqft</p>
-                                            <p>Sanitarywares &amp; CP fittings upto Rs. 70,000 per 1000 Sqft of Jaquar
-                                                make</p>
-                                            <p>CPVC Pipe - APL Apollo or Equivalent</p>
-                                            <p>Bathroom doors - Waterproof flush doors or WPC</p>
-                                       <p>Mirror. Soap Dish, Towel rail - Worth Rs. 7000 till 1000 ft of Construction</p>
-                                       <p>Solar water heater provision</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed " type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseFive"
-                                            aria-expanded="false" aria-controls="flush-collapseFive" id="acc-btn">
-                                            Doors & Windows <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseFive" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                           <p>Windows - UPVC Windows with glass and mesh shutters (3 track with 1 mesh) of Prominance or NCL Veka or equivalent make</p>
-                                           <p>Main Door - Teak Door With Teak frame of 5 inch by 3.5 inch, worth Rs.40,000 including fixtures.</p>
-                                           <p>Internal Doors - Membrane doors / Flush Door with Laminates upto upto Rs.13,000 including fixtures. Door Frames of Sal Wood 4 inch by 3 inch.</p>
-                                           <p>1 Pooja Room Door - Burma Teak along with Teak frame of 5inch by 2.5 inch, worth Rs. 28,000 for every 2,000 sft package area</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseSix"
-                                            aria-expanded="false" aria-controls="flush-collapseSix" id="acc-btn">
-                                            Painting <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSix" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p>Interior Painting - JK Putty + Apcolite Premium Emulsion or equivalent</p>
-                                            <p>Exterior Painting - Asian Primer + Apex Exterior Emulsion Paint or
-                                                equivalent
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
-                                            aria-expanded="false" aria-controls="flush-collapseSeven" id="acc-btn">
-                                            Flooring <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseSeven" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p>Living &amp; Dining Flooring - Tiles or Granite or Marble of value upto Rs.140 per sqft</p>
-                                            <p>Rooms &amp; Kitchen Flooring - Tiles or Granite or Marble of value upto Rs.120 per sqft</p>
-                                            <p>Balcony and Open Areas Flooring - Anti-skid tiles of value upto Rs.80 per
-                                                sqft</p>
-                                            <p>Staircase Flooring - Sadarahalli Granite of value upto ₹ 110 per sqft</p>
-                                            <p>Parking Tiles - Anti-skid tiles of value upto ₹ 70 per sqft</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
-                                            aria-expanded="false" aria-controls="flush-collapseEight" id="acc-btn">
-                                            Electrical <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseEight" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p>All wiring shall be done with fire proof wires of Finolex silver FR or
-                                                equivalent.</p>
-                                            <p>Switches &amp; Sockets - Legrand Mylinc or 
-                                                equivalent</p>
-                                                <p>UPS Wiring Provision</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button acc-btn  collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
-                                            aria-expanded="false" aria-controls="flush-collapseNine" id="acc-btn">
-                                            Miscellaneous <i class="fa-solid fa-plus plus"></i> <i
-                                                class="fa-solid fa-minus minus"></i>
-                                        </button>
-                                    </h2>
-                                    <div id="flush-collapseNine" class="accordion-collapse collapse"
-                                        data-bs-parent="#accordionFlushExample4">
-                                        <div class="accordion-body">
-                                            <p>A Sintex Double layered overhead tank of - 2000L shall be provided. Any Additional capacity shall be chargeable at INR 9 per L. Platform for the OHT shall be charged additional based on the design and specifications</p>
-                                            <p>Underground Sump - 7000 Ltrs</p>
-                                            <p>Staircase Railing - SS(Stainless) Railing of SS 304 grade profiles </p>
-                                            <p>Window Grills - Basic MS Grill with enamel Paint at Rs. 195 per Sqft</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- <hr class="mt-0" style="color: gray;"> -->
-                            </div>
-                            <hr class="mt-1" style="color: gray;">
-                            <!--Accordian LET's BUILD Down Button -->
-                            <div class="text-center">
-                                <p class="mt-3 mb-0 fs-7">Get in touch with us</p>
-                                <button class="hire-btn rightarrow-hover mb-4">LET'S BUILD <i
-                                        class="fa-solid fa-arrow-right arrow-right "></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- 3rd box details Ends -->
-
+                </div>
             </div>
             <!-- Terms & conditions -->
             <div class="d-flex justify-content-end mt-5 pt-5 ">*<a href="" class="anchor">T&C Apply</a></div>
@@ -854,14 +982,14 @@
     </div>
 
 
-    <!-- linking Bootstrap script -->
+    <!-- Bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <!-- swiper script linking from getting started with swiper -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <!-- linking internal JS file -->
-    <script src="./b&b_js.js"></script>
+    <script src="./Javascript/b&b_js.js"></script>
 </body>
 
 </html>
