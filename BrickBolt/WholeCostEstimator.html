@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost Estimator</title>
+    <!-- Bootstrap linking -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Linking Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Poppins Google font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <!-- font awsome link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- linking swiper cdn from getting started with siper -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- linking Index Css file -->
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/Responsive.css">
+
+    <style>
+        body {
+            font-family: "DM Sans", sans-serif;
+        }
+
+        /* House Construction Cost Calculator CSS Starts */
+        /* House Construction Left sec CSS Starts  */
+        .houseConst-left {
+            width: 50%;
+        }
+
+        .block-margin {
+            margin-block: 40px;
+        }
+
+        .houseConst-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            /* grid-template-rows: 100px 100px 100px; */
+            column-gap: 50px;
+            /* display: flex; */
+            height: 320px;
+        }
+
+        .houseConst-form input {
+            width: 100%;
+            height: 50px;
+            border: 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.411);
+            outline: 0;
+            /* justify-self: start; */
+            /* align-self: end; */
+        }
+
+        .houseConst-form input:focus {
+            border-bottom: 2px solid #F15A29;
+        }
+
+        /* Dynamically adding Class to move placeholder content up */
+        input.placeholder-up::placeholder {
+            transform: translateY(-15px);
+        }
+
+        .houseConst-form label {
+            color: rgba(0, 0, 0, 0.55);
+        }
+
+        .houseConst-form select {
+            width: 100%;
+            outline: 0;
+            border: 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.411);
+        }
+
+        .houseConst-form select:focus {
+            border-bottom: 2px solid #F15A29;
+        }
+
+        /* dynamically Making this ele display:block/none */
+        #costEst-mon-errMsg {
+            color: #F15A29;
+            display: none;
+        }
+
+        /* House Construction Left sec CSS Ends  */
+
+        /* houseConst-Vertical-Slidebar CSS Starts */
+        .houseConst-parent {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .houseConst-Vertical-Slidebar {
+            margin-top: 50px;
+            height: 600px;
+            width: 340px;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+
+        .houseConst-form~.estimate-cost {
+            width: 50vw;
+            background-color: #F15A29;
+            border: 0;
+            border-radius: 8px;
+            padding-block: 6px;
+            color: white;
+            font-weight: bolder;
+            font-size: 1.15rem;
+        }
+
+        .taxbox {
+            /* width: 300px; */
+            height: 120px;
+            border: 1px solid rgba(128, 128, 128, 0.266);
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            border-radius: 10px;
+            margin-block: 10px;
+            padding: 0 0 20px 10px;
+
+        }
+
+        .taxbox a {
+            color: #F15A29;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .slant-right-up-arrow {
+            position: relative;
+            bottom: 10px;
+            left: -10px;
+            display: inline-block;
+            width: 16px;
+            /* Length of the arrow shaft */
+            height: 1.5px;
+            /* Thickness of the arrow shaft */
+            background-color: #000;
+            /* Color of the arrow shaft */
+            transform: rotate(-30deg);
+            /* Makes the line slant to the right-up direction */
+        }
+
+        .slant-right-up-arrow::after {
+            content: '';
+            position: absolute;
+            right: -0.5px;
+            /* Positioning the arrowhead */
+            top: -5px;
+            width: 13px;
+            height: 13px;
+            border-top: 2px solid #000;
+            /* Arrowhead color and thickness */
+            border-right: 2px solid #000;
+            transform: rotate(40deg);
+        }
+
+        /* houseConst-Vertical-Slidebar CSS Starts */
+        /* House Construction Cost Calculator CSS Starts */
+
+        /* Talk-To-Our-Expert container 1se sec Strats */
+        .talk-to-our-expert {
+            /* width: 50vw; */
+            width: 50vmax;
+            /* height: 500px; */
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .talk-to-our-expert-container {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .talk-to-our-expert .hire-btn {
+            width: 22vw;
+        }
+
+        .talk-to-our-expert .houseConst-form {
+            height: 180px;
+            /* height:15vmax; */
+        }
+
+        /* Talk-To-Our-Expert container 1se sec Ends */
+
+        /* Talk to our Expert 2nd sec CSS Starts */
+        .talk-expert-left {
+            width: 60%;
+        }
+
+        .talk-expert-left p {
+            font-size: 18px;
+            color: #1D1A12;
+        }
+
+        .talk-expert-left h2 {
+            font-size: 7vmin;
+            font-weight: 600;
+        }
+
+        .talk-expert-left h5 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-block: 20px;
+        }
+
+        .talk-expert-vb-sticky {
+            position: sticky;
+            top: 30px;
+        }
+
+        /* Accordian customization statrs */
+        .talk-expert-left .accordion {
+
+            --bs-accordion-bg: transparent;
+        }
+
+        .cost-est-accordian-arrow-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cost-est-accordian-arrow-flex i {
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+            /* Smooth rotation */
+        }
+
+        /* Rotate the arrow when the accordion is open */
+        /* The .accordion-button:not(.collapsed) + i selector targets the icon immediately following the .accordion-button when the button is not collapsed, applying a 90-degree rotation. */
+        .talk-expert-left .accordion-button:not(.collapsed)+i {
+            transform: rotate(90deg);
+            /* Rotate by 90 degrees when open */
+            color: #F15A29;
+        }
+
+        .talk-expert-left .accordion-flush>.accordion-item>.accordion-collapse {
+            font-size: 1.15rem;
+            color: #666;
+        }
+
+        .talk-expert-left .accordion-button:not(.collapsed) {
+            color: black;
+        }
+
+        .talk-expert-left .accordion-button {
+            padding: 20px 0;
+        }
+
+        /* Question heading */
+        .cost-est-accordian-arrow-flex button {
+            font-weight: 400;
+            font-size: 1.1rem;
+        }
+
+        /* Accordian customization ends */
+        /* Talk to our Expert 2nd sec CSS Ends */
+
+        /* Cost esztimator Responsive starts */
+        @media (max-width:1200px) {
+
+            .houseConst-left,
+            .talk-expert-left {
+                width: 100%;
+            }
+
+            .houseConst-parent {
+
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .houseConst-form {
+                column-gap: 20px;
+            }
+
+            .talk-expert-vb-sticky {
+                display: none;
+            }
+        }
+
+        @media (max-width:1080px) {
+
+            .houseConst-form {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                height: 500px;
+                /*why justify-content:center is not working   */
+            }
+
+        }
+
+        @media (max-width:400px) {
+            .houseConst-Vertical-Slidebar {
+                width: 280px;
+            }
+        }
+        /* Talk-To-Our-Expert container 1se sec Responsive Starts */
+        @media (max-width:1080px) {
+            .talk-to-our-expert .hire-btn {
+                width: 40vmin;
+                padding: 5px;
+                position: relative;
+                top: 23px;
+                margin-block: 10px;
+            }
+        }
+        @media (max-width:798px) {
+            .talk-to-our-expert .houseConst-form {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .talk-to-our-expert {
+                padding: 7px;
+            }
+
+          
+
+            .talk-to-our-expert input::placeholder {
+                text-wrap: wrap;
+            }
+        }
+        /* Talk-To-Our-Expert container 1se sec Responsive Ends */
+        /* Cost esztimator Responsive ends */
+    </style>
+</head>
+
+<body>
+    <!-- Header Starts -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary header-sticky">
+        <!-- <div class="container"> -->
+        <div class="container-fluid  nav-grid">
+            <a class="navbar-brand logoLeft-padding" href="./index.html"><img src="../BrickBolt/assets/Logo_Home.svg" alt=""></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav  fw-semibold mb-2 mb-lg-0 header-res-flex">
+                    <li class="nav-item dropdown blore-bg-cr">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <span class="orange-red fs-6 fw-bold">BENGALURU <i
+                                    class="fa-solid fa-angle-down fs-6"></i></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Bengaluru</a></li>
+                            <li><a class="dropdown-item" href="#">Chennai</a></li>
+                            <li><a class="dropdown-item" href="#">Hyderabad</a></li>
+                            <li><a class="dropdown-item" href="#">Mysuru</a></li>
+                            <li><a class="dropdown-item" href="#">NCR-Delhi</a></li>
+                            <li><a class="dropdown-item" href="#">NCR-Faridabad</a></li>
+                            <li><a class="dropdown-item" href="#">NCR-Ghaziabad</a></li>
+                            <li><a class="dropdown-item" href="#">NCR-Gurgaon</a></li>
+                            <li><a class="dropdown-item" href="#">NCR-Noida</a></li>
+                            <li><a class="dropdown-item" href="#">Pune</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link heading" aria-current="page" href="#">Our Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link heading" href="#">Floor Plans<sup class="orange-red">New!</sup></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link heading " href="#">Cost Estimator</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link heading " href="#">How it works</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle heading" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            More <i class="fa-solid fa-angle-down fs-6"></i></span>
+                        </a>
+                        <ul class="dropdown-menu more-dropdownMenu">
+                            <li><a class="dropdown-item" href="#">Blogs and Articles</a></li>
+                            <li><a class="dropdown-item" href="#">Material Estimator</a></li>
+                            <li><a class="dropdown-item" href="#">Stamp Duty Cost Estimator<sup
+                                        class="orange-red">New!</sup></a></li>
+                            <li><a class="dropdown-item" href="#">Foundation Cost Estimator<sup
+                                        class="orange-red">New!</sup></a></li>
+                            <li><a class="dropdown-item" href="#">FSI Calculator<sup class="orange-red">New!</sup></a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Brick Calculator<sup class="orange-red">New!</sup></a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Carpet Calculator<sup
+                                        class="orange-red">New!</sup></a></li>
+                            <li><a class="dropdown-item" href="#">Concrete Calculator<sup
+                                        class="orange-red">New!</sup></a></li>
+                            <li><a class="dropdown-item" href="#">Tile Calculator<sup class="orange-red">New!</sup></a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Khata Transfer Fees Calculator<sup
+                                        class="orange-red">New!</sup></a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">Patta Cost Calculator<sup
+                                        class="orange-red">New!</sup></a></li>
+                            <li><a class="dropdown-item" href="#">Development Charges Calculator<sup
+                                        class="orange-red">New!</sup></a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">About Us</a></li>
+                            <li><a class="dropdown-item" href="#">Careers</a></li>
+                            <li><a class="dropdown-item" href="#">Contact Us</a></li>
+                            <li><a class="dropdown-item" href="#">Join Us as a professional</a></li>
+                            <li><a class="dropdown-item" href="#">Reviews</a></li>
+                            <li><a class="dropdown-item" href="#">Luxury Projects</a></li>
+                            <li><a class="dropdown-item" href="#">Home Construction Cost Calculator</a></li>
+                            <li><a class="dropdown-item" href="#">All About House Construction</a></li>
+                            <li><a class="dropdown-item" href="#">Home Building Guide</a></li>
+                        </ul>
+                    </li>
+                    <div class="btn-whatsapp">
+                        <li class="nav-item lets-btn">
+                            <a class="nav-link header-btn text-nowrap px-4 ms-4" href="#">LET'S BUILD &nbsp;&nbsp;<i
+                                    class="fa-solid fa-arrow-right"></i></a>
+                        </li>
+                        <div class="vertical-line"></div>
+                        <div class="wht-grid">
+                            <li class="nav-item ">
+                                <a class="nav-link call-icon text-white" href="#"><i
+                                        class="fa-solid fa-phone fa-lg"></i></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link heading text-nowrap" href="#">+91 7505 205 205</a>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+    <!-- Header Ends -->
+
+    <!-- House Construction Cost Calculator starts -->
+    <div class="container dmSans houseConst-parent  inline-padding block-margin">
+        <!-- House Construction Left sec Starts -->
+        <div class="houseConst-left">
+            <h1>House Construction Cost Calculator</h1>
+            <p>Fill out the form below to get an estimate of house construction costs. Speak to our technical expert for
+                a more accurate pricing</p>
+            <form class="houseConst-form" id="houseConst-form">
+                <div>
+                    <input id="costEst-mno" type="tel" name="tel" placeholder="Mobile Number*">
+                    <p id="costEst-mon-errMsg">*Phone number field is required</p>
+                </div>
+                <input class="jsplaceholder" type="text" name="name" placeholder="Name*">
+                <input class="jsplaceholder" type="text" name="loc" placeholder="Location of your Plot*">
+                <input class="jsplaceholder" type="text" name="builtarea" placeholder="Super Built Up Area (sq.ft)*">
+                <!-- <input type="number" name="noofcars" placeholder="No Of Car Parking(130 sq.ft/unit)*"> -->
+                <div>
+                    <label for="noofCarsParking" class="noofCarsParking-content">No Of Car Parking(130
+                        sq.ft/unit)*</label>
+                    <div>
+                        <select name="" id="noofCarsParking">
+                            <option value="0">00</option>
+                            <option value="1" selected>01</option>
+                            <option value="2">02</option>
+                            <option value="3">03</option>
+                            <option value="4">04</option>
+                        </select>
+                    </div>
+                </div>
+                <input class="jsplaceholder" type="text" name="utilityarea"
+                    placeholder="Balcony & Utility Area (sq.ft)*">
+            </form>
+            <button class="estimate-cost rightarrow-hover">ESTIMATE COST <i
+                    class="fa-solid fa-arrow-right arrow-right "></i></button>
+            <p class="fs-7 mt-4">Disclimer:</p>
+            <p class="fs-7">The costs indicated are approximate costs for each resource. Actual cost estimates may vary
+                for your city. Please check with ourr technical expert for a more accurate pricing or visit our
+                BricknBolt office for a custom cost estimate as per your requirement. This amount is an approximate
+                amount for construction area & it does not include compound wall area.</p>
+        </div>
+        <!-- House Construction Left sec Ends -->
+        <!--houseConst-Vertical-Slidebar Starts  -->
+        <div class="houseConst-Vertical-Slidebar">
+            <p>More Free Calculators</p>
+            <div class="taxbox">
+                <a href="#">Property Tax Calculator</a> <span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Stamp Duty Cost Estimator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Foundation Cost Estimator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">FSI Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Staircase Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Compound Wall Cost Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Development Charges Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Khata Transfer Fees Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Patta Cost Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Concrete Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Brick Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Tile Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Carpet Calculator</a><span class="slant-right-up-arrow"></span>
+            </div>
+            <div class="taxbox">
+                <a href="#">Material Estimator</a><span class="slant-right-up-arrow"></span>
+            </div>
+        </div>
+        <!--houseConst-Vertical-Slidebar Starts  -->
+    </div>
+    <!-- House Construction Cost Calculator Ends -->
+
+    <!-- Talk-To-Our-Expert container 1se sec Strats -->
+    <div class="talk-to-our-expert-container">
+        <div class="talk-to-our-expert block-margin">
+            <h4>Talk to our Expert</h4>
+            <form class="houseConst-form mt-4" id="houseConst-form">
+
+                <input class="jsplaceholder" type="text" name="name" placeholder="Name*">
+                <div>
+                    <input id="costEst-mno" type="tel" name="tel" placeholder="Mobile Number*">
+                    <p id="costEst-mon-errMsg">*Phone number field is required</p>
+                </div>
+                <input class="jsplaceholder" type="email" name="email" placeholder="Email">
+                <!-- <input type="number" name="noofcars" placeholder="No Of Car Parking(130 sq.ft/unit)*"> -->
+                <input class="jsplaceholder" type="text" name="loc" placeholder="Location of your Plot*">
+            </form>
+            <button class="hire-btn dmSans rightarrow-hover">Submit <i
+                    class="fa-solid fa-arrow-right arrow-right "></i></button>
+            <p class="fs-8 mt-4"> By submitting this form, I confirm that I have read and agreed to accept Brick&Bolt's
+            </p>
+        </div>
+    </div>
+    <!-- Talk-To-Our-Expert container 1se sec Ends -->
+
+    <!-- Talk to our Expert 2nd sec Starts  -->
+    <div style="background-color: rgba(0, 0, 0, 0.04);">
+        <div class="container inline-padding  houseConst-parent ">
+            <div class="talk-expert-left block-margin">
+                <p>Are you planning to build your dream home and need to know your home construction cost estimate? Look
+                    no further! Brick & Bolt’s House Construction Cost Calculator is here to simplify the process for
+                    you. Whether you're a professional contractor or a DIY enthusiast, our construction cost estimator
+                    gives you a clear understanding of your construction expenses by giving you overall house
+                    construction cost per square foot with the bifurcation of built-up cost, car parking cost and
+                    balcony & utility cost. It will help you to stay within budget and complete your project
+                    successfully.</p>
+                <h2>Why Use a House Construction Cost Calculator Tool?</h2>
+                <h5>Customizable Inputs</h5>
+                <p>We understand that every construction project is unique. Hence, our home building construction cost
+                    calculator allows you to customize inputs as per your specific needs. Whether you want to build a
+                    small, cozy house or a huge villa, you can tailor your building cost per square foot to suit your
+                    needs.</p>
+                <h5>Accurate Cost Estimation</h5>
+                <p>Our home construction cost calculator utilizes up-to-date pricing data to give you accurate cost
+                    estimates for each segregation. So, say no to uncertain estimations and welcome accurate numbers
+                    that you can trust.</p>
+                <h5>Instant Results</h5>
+                <p>Our house cost estimator delivers instant results with just a few clicks, saving you time and effort.
+                    You will have a clear overview of your future expenses in no time, allowing you to confidently
+                    proceed with your project planning.</p>
+                <h2>How to Use the Home Construction Cost Calculator</h2>
+                <h5>Step-by-step Instructions To Calculate House Construction Cost per Square Foot</h5>
+                <div class="ms-5">
+                    <p>From the dropdown menu, enter the pin code of your location where you want to construct the
+                        building.</p>
+                    <p>Mention the super built-up area in sq. ft. (Only enter the area in sq. ft.)</p>
+                    <p>Select the number of car parking from the dropdown menu.</p>
+                    <p>Mention the balcony & utility area in sq. ft.</p>
+                    <p>Click on the estimate cost option to get a detailed estimation of the house construction cost.
+                    </p>
+                </div>
+                <h2>Example of House Construction Cost Calculation</h2>
+                <p>For a better understanding of the example, let’s assume the following criteria-</p>
+                <div class="ms-5">
+                    <p>Your location is in Bengaluru, and the pin code is 560072.</p>
+                    <p>Your super built-up area is 1000 sq. ft.</p>
+                    <p>No. of car parking requirements is 01.</p>
+                    <p>Your balcony and utility area is 800 sq. ft.</p>
+                </div>
+                <p>Fill in all the above details in the home construction estimator’s respective options and click on
+                    the estimate cost option.</p>
+                <p>The following image represents the process mentioned above.</p>
+                <p>Voila! Your home construction cost calculation is ready…</p>
+                <p>The following image represents your detailed cost calculation.</p>
+
+                <h2>Why Choose Brick & Bolt?</h2>
+                <h5>Save Time</h5>
+                <p>No more manual calculations or endless research. Our home building cost calculator streamlines the
+                    process, allowing you to focus on what matters most to complete your project.</p>
+                <h5>Stay on Budget</h5>
+                <p>You can avoid overpaying and staying on budget by accurately evaluating your project expenses
+                    beforehand.
+                </p>
+                <h5>Make Informed Decisions:</h5>
+                <p>Equipped with precise cost estimates, you can make informed decisions for your project about what to
+                    prioritize and how to allocate your resources effectively.</p>
+                <h2>Contact Us</h2>
+                <p>At Brick & Bolt, we understand construction project challenges and are committed to providing
+                    practical
+                    solutions to our clients. Our home construction cost calculator is just one example of how we strive
+                    to
+                    simplify the construction process and empower our customers with valuable resources and tools. So,
+                    take
+                    advantage of our construction cost estimate Tool today and confidently embark on your project.</p>
+                <h2>FAQs About House Construction Cost Calculator</h2>
+                <!-- Accordian starts -->
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                    1. What is the cost per square foot to build a house?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+
+                            </div>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">The cost of building a house varies from city to city, but it
+                                normally ranges between 1600 rs to 2500 rs per square foot.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                    2. To what extent is the calculator's cost estimate accuracy reliable?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+
+                            </div>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Our calculator generates cost estimates using current price data
+                                and industry-standard methods. While we aim for accuracy, keep in mind that these are
+                                just estimates, and real costs may vary based on market circumstances, labour rates, and
+                                material pricing.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree">
+                                    3. Is a compound wall included in the package?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Not all houses have a compound. Then, there are houses which
+                                require a compound wall on just two or three sides. By removing the compound wall from
+                                the package, we ensure that only the clients who opt for a compound wall pay for it.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                    aria-controls="flush-collapseFour">
+                                    4. What happens if I want a different brand of materials other than the ones in the
+                                    packages?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Our packages are developed in a modular manner. Hence, any
+                                change in specification is as simple as adding something to your shopping cart and
+                                removing something from the shopping cart. Our technical consultants can give a demo on
+                                this.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                    aria-controls="flush-collapseFive">
+                                    5. Who should I contact if I have any more questions or need assistance?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">If you have any more questions or need help, please contact us
+                                through our website or phone number - +91 7505 205 205. We are here to assist you and
+                                guarantee that you have a great experience when using our house construction cost
+                                calculator and planning your building project with Brick & Bolt.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSix" aria-expanded="false"
+                                    aria-controls="flush-collapseSix">
+                                    6. Will Brick&Bolt packages cover my approvals if needed?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseSix" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Brick&Bolt assists our clients in the approval process through
+                                the Construction Professionals onboarded on the platform. We are not directly involved
+                                in the approval process but our partners ensure that the clients get a completely
+                                hassle-free experience.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSeven" aria-expanded="false"
+                                    aria-controls="flush-collapseSeven">
+                                    7. What are the quality checks that you perform on the site?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">We have our very own QASCON Checklist with 470+ Quality Checks.
+                                You can refer to the Quality section of the website.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseEight" aria-expanded="false"
+                                    aria-controls="flush-collapseEight">
+                                    8. Is a compound wall included in the package?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseEight" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Not all houses have a compound. Then, there are houses which
+                                require a compound wall on just two or three sides. By removing the compound wall from
+                                the package, we ensure that only the clients who opt for a compound wall, pay for it.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseNine" aria-expanded="false"
+                                    aria-controls="flush-collapseNine">
+                                    9. What happens if I want a different brand of materials other than the ones in the
+                                    packages?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseNine" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Our packages are developed in a modular manner. Hence, any
+                                change in specification is as simple as adding something to your shopping cart and
+                                removing something from the shopping cart. Our technical consultants can give a demo on
+                                this.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTen" aria-expanded="false"
+                                    aria-controls="flush-collapseTen">
+                                    10. On what basis do you assign contractors to a project?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseTen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Brick&Bolt conducts a series of background checks on a
+                                contractor before they are allowed to work with us. These checks include document checks
+                                like the GST registrations, income tax filings etc. Then physical verification of the
+                                projects that are under construction as well as completed by the contractor are verified
+                                by the team from Brick&Bolt. Such contractors are then monitored and rated through a
+                                continuous assessment system so that the best contractors are alloted more projects.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseEleven" aria-expanded="false"
+                                    aria-controls="flush-collapseEleven">
+                                    11. Approximately how long does it take to complete the construction of one floor?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseEleven" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">It takes about 5 months for the first floor and another 1.5
+                                months for every floor beyond that. Duration also varies depending upon the built-up
+                                area, location, design complexity, etc.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwelve" aria-expanded="false"
+                                    aria-controls="flush-collapseTwelve">
+                                    12. Does Brick&Bolt provide loans as well?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseTwelve" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Brick&Bolt assists the clients with the documentation part for
+                                the loan approval process. We have also partnered with a couple of banks and NBFCs for
+                                attractive interest rates.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThirteen" aria-expanded="false"
+                                    aria-controls="flush-collapseThirteen">
+                                    13. Does Brick&Bolt include the interior with the construction and provide the
+                                    complete package?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseThirteen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">There are separate packages for interior works if you wish to
+                                get the interiors done through Brick&Bolt. We have also collaborated with a couple of
+                                boutique designer firms for amazing interiors at competitive prices.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFourteen" aria-expanded="false"
+                                    aria-controls="flush-collapseFourteen">
+                                    14. What if the prices of the materials increase when the project is ongoing. Would
+                                    there be a price escalation?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseFourteen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">The pricing of our contracts is frozen on a stamp paper. Hence,
+                                the prices remain stable in most of the scenarios. Only in exceptional situations where
+                                there is a sudden spike in prices due to external circumstances, the price variation is
+                                to be paid by the client. On the other hand, if there is a price drop, clients get a
+                                price reduction for the same.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFifteen" aria-expanded="false"
+                                    aria-controls="flush-collapseFifteen">
+                                    15. What are the major factors on which house construction cost depends?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseFifteen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">The construction cost of a house majorly depends upon the Super
+                                built-up area, Open area (i.e., Balcony, Utility), Quality of Construction materials,
+                                and Interiors. Brick&Bolt provides various packages at different prices to suit your
+                                needs.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSixteen" aria-expanded="false"
+                                    aria-controls="flush-collapseSixteen">
+                                    16. What is a super built-up area, built-up area, and carpet area?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseSixteen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Carpet Area is the total usable area inside the house that can
+                                be covered by Carpet. The carpet area excludes the balcony and other utility areas but
+                                does include the area covered by internal walls. Built-up Area is the sum of carpet area
+                                plus the area covered by the balcony, terrace, and other utility as well. The Super
+                                built-up area is the total sum of the built-up area and space occupied by common areas
+                                like lobby, staircase, elevator, shafts, and clubhouse. This is often referred to as a
+                                saleable area.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSeventeen" aria-expanded="false"
+                                    aria-controls="flush-collapseSeventeen">
+                                    17. Does Brick&Bolt charge an advance payment?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseSeventeen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">Yes. Brick&Bolt collects a booking amount of about 2% of the
+                                total home construction cost. Alongside this, we conduct digital surveys, perform soil
+                                tests, and create a floor plan.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseEighteen" aria-expanded="false"
+                                    aria-controls="flush-collapseEighteen">
+                                    18. What is the estimated time it will take to build a full house?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseEighteen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">It takes 6 to 14 months to complete a house construction
+                                project. Generally, a 5-month period to build the first floor and 1.5 months for each
+                                one after that is the standard. However, this depends on the space, built-up area,
+                                location, design, construction type (foundation or core), etc. You can track your
+                                project, including updates, inspection reports, payment schedules, etc., on the customer
+                                app.</div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <div class="cost-est-accordian-arrow-flex">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseNineteen" aria-expanded="false"
+                                    aria-controls="flush-collapseNineteen">
+                                    19. Do I have to pay the full amount before the project starts?
+                                </button>
+                                <i class="fa-solid fa-greater-than"></i>
+                            </div>
+                        </h2>
+                        <div id="flush-collapseNineteen" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">No. You will have to pay different amounts based on the
+                                personalised payment schedule curated based on the construction stages of your project.
+                                We charge a 2% booking amount. 8% of the total amount is collected once the floor plan
+                                is finalised. Our construction company then moves forward with structural drawings, MEP
+                                drawings, 3D elevation drawings, and the initiation of contractor allocation. After the
+                                completion of the design phase, the finalised product is handed over to the project
+                                management team. This is where you have to pay 15% of the project value until the plinth
+                                is constructed. From here on, the remaining payment will be based on stages specific to
+                                the project.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Cost estimator Right-side vertical scroll bar starts -->
+            <div class="houseConst-Vertical-Slidebar talk-expert-vb-sticky">
+                <p>More Free Calculators</p>
+                <div class="taxbox">
+                    <a href="#">Property Tax Calculator</a> <span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Stamp Duty Cost Estimator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Foundation Cost Estimator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">FSI Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Staircase Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Compound Wall Cost Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Development Charges Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Khata Transfer Fees Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Patta Cost Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Concrete Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Brick Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Tile Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Carpet Calculator</a><span class="slant-right-up-arrow"></span>
+                </div>
+                <div class="taxbox">
+                    <a href="#">Material Estimator</a><span class="slant-right-up-arrow"></span>
+                </div>
+            </div>
+            <!-- Cost estimator Right-sidevertical scroll bar starts -->
+
+        </div>
+    </div>
+    <!-- Talk to our Expert 2nd sec Ends  -->
+
+    <div class="container mt-5">
+        <!--Frm LandingPage why B&B 2nd part starts -->
+        <div class="inline-padding d-lg-flex">
+            <div class="w-100 me-5">
+                <h4 class="mb-4"><span class="diagnol"></span>We Construct Your Dream Home.<br> You Track Progress On
+                    App. </h4>
+                <p>Track house construction project progress, raise queries, view inspection reports and more.</p>
+                <div class="track">
+                    <p>View packages.floor plans, design recommendations</p>
+                    <p>Capture house construction progress in 3D</p>
+                    <p>Realtime tracking until project completion</p>
+                </div>
+            </div>
+            <figure>
+                <img src="../BrickBolt/assets/offerLandingPageBanner.webp" alt="">
+            </figure>
+        </div>
+    </div>
+    <!-- Frm LandingPage why B&B 2nd part Ends -->
+
+    <!-- Frm LandingPage Hire the best House starts -->
+    <div class="hire-bg-color ">
+
+        <div class="rectangle float-end"></div>
+        <div class="container  ">
+            <!-- Dashed line -->
+            <div class="dashed-line line"></div>
+            <div class="inline-padding hire-left ">
+                <h4 class="mb-4">Hire the best house <br>construction service</h4>
+
+                <div class="milestones dmSans d-md-flex mb-5 ">
+
+                    <div class="milestone-part fs-5 me-5">
+                        <h5><i class="fa-solid fa-house">&nbsp&nbsp&nbsp</i>4500+</h5>
+                        <p>Homes</p>
+                    </div>
+
+                    <div class="milestone-part fs-5 me-5">
+                        <h5><i class="fa-solid fa-circle-check"></i>&nbsp&nbsp&nbsp470+</h5>
+                        <p>Quality Checks</p>
+                    </div>
+
+                    <div class="milestone-part fs-5">
+                        <h5><i class="fa-solid fa-indian-rupee-sign"></i>&nbsp&nbsp&nbsp100%</h5>
+                        <p>Safe Money Transaction</p>
+                    </div>
+
+                </div>
+                <button class="hire-btn dmSans rightarrow-hover">LET'S BUILD <i
+                        class="fa-solid fa-arrow-right arrow-right "></i></button>
+            </div>
+        </div>
+    </div>
+    <!-- Frm LandingPage Hire the best House Endss -->
+
+    <!-- Frm landing Page Information above Faqs starts-->
+    <div class="container inline-padding faq-contennt">
+        Brick&Bolt, India’s No.1 home construction company, provides complete start to finish aka a design-to-build
+        service
+        that enables real time tracking, communication, quality checks and updates on projects from day one till the
+        final
+        project delivery day. Brick&Bolt aims to bring transparency and trust into the construction space by using tech.
+        The
+        quality and progress of projects are mapped using artificial intelligence and computer vision, allowing for
+        streamlined management architecture and enabling the predictability of the entire house construction process.
+    </div>
+    <!-- Frm landing Page Information above Faqs Ends-->
+
+    <!-- Footer starts -->
+    <!-- 1st Section -->
+    <footer class="text-white fw-lighter bg-dark ">
+        <div class="container inline-padding pt-4">
+            <div class=" row ">
+                <div class="col-sm-12 col-md-6 col-lg-4 mb-3 ">
+                    <div>
+                        <h5 class="mb-4 fs-5 fw-bold">Site Map</h5>
+                        <ul class="nav flex-column text-nowrap  fs-6">
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">How it Works</a>
+                            </li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Our Projects</a>
+                            </li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Luxury Projects</a>
+                            </li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Cost Estimator</a>
+                            </li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Floor Plans</a>
+                            </li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">About Us</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Blogs and
+                                    Articles</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Careers</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Contact Us</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50">Reviews</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class=" col-sm-12 col-md-6 col-lg-4 mb-3">
+                    <div>
+                        <h5 class="mb-4 fs-5 fw-bold">Others</h5>
+                        <ul class="nav flex-column mb-5 text-nowrap fs-6">
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 fs-6">Join us as a
+                                    professional</a>
+                            </li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 fs-6">Refer a
+                                    Friend</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 fs-6">Chanal
+                                    Partner</a></li>
+
+                        </ul>
+                        <h5 class="mb-4 fs-5 fw-bold">Information</h5>
+                        <ul class="nav flex-column text-nowrap fs-6">
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 ">Terms &
+                                    Conditions</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 ">Privacy Policy</a>
+                            </li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 ">FAQs</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 ">Cancellation
+                                    Policy</a></li>
+                            <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 ">Referral
+                                    Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="col-sm-12 col-md-6 col-lg-4  mb-3  text-nowrap">
+                    <div>
+                        <a href="#" class="nav-link p-0 text-white fs-6  brick-hover fw-bold text-wrap">Brick&Bolt
+                            Construction for
+                            Business<i class="fa-solid fa-arrow-right arrow-right "></i></a>
+
+                        <!-- <a class="icon-link icon-link-hover" style="--bs-icon-link-transform: translate3d(0, -.125rem, 0);"
+              href="#">
+              <svg class="bi" aria-hidden="true">
+                <use xlink:href="#clipboard"></use>
+              </svg>
+              Icon link
+            </a> -->
+                        <a href="#" class="nav-link p-0 text-white fs-6 rightarrow-hover fw-bold text-wrap">Brick&Bolt
+                            Building
+                            Materials<i class="fa-solid fa-arrow-right arrow-right "></i></a>
+                        <hr class="text-white-75">
+                        <div class="mt-3">
+                            <h5 class="fs-5 mt-3 fw-bold">Get in Touch</h5>
+                            <ul class="nav d-flex justify-content-between mt-3">
+                                <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50 fs-6">+91 7505
+                                        205 205</a></li>
+                                <li class="nav-item mb-3"><a href="#"
+                                        class="nav-link p-0 text-white-50 fs-6">care@bricknbolt.com</a>
+                                </li>
+                            </ul>
+                            <hr class="text-white-75">
+                        </div>
+                        <!-- Social links -->
+                        <div class="mt-3">
+                            <ul class="nav mt-5">
+                                <li class="nav-item mb-3"><a
+                                        href="https://x.com/i/flow/login?redirect_after_login=%2FBricknBolt"
+                                        target="_blank" class="nav-link p-0 text-white-50"> <i
+                                            class="fa-brands fa-twitter fa-l me-4"></i></a></li>
+                                <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50"><i
+                                            class="fa-brands fa-facebook-f fa-l me-4"></i></a></li>
+                                <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white-50"><i
+                                            class="fa-brands fa-linkedin-in fa-l"></i></a></li>
+                            </ul>
+                            <div class="play-store mt-3 ">
+                                <a href=""><img class="w-50 me-4" src="./assets/google-playstore.webp"
+                                        alt="Google-playstore"></a>
+                                <a href=""><img class="appstore-img" src="./assets/appStore.png" alt="app-store"></a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr class="text-white-75 mb-4">
+        <!-- 2nd Section starts -->
+        <div class="container inline-padding d-flex flex-column flex-sm-row justify-content-between fs-6">
+            <p>© 2024 Pluckwalk Technologies Pvt. Ltd. All rights reserved.</p>
+        </div>
+        <!-- 2nd section ends -->
+        <hr class="text-white-75">
+
+        <!-- 3rd Section starts -->
+        <div class="container inline-padding fs-5">
+            <div class="row justify-content-sm-center">
+                <!-- 1st Column -->
+                <div class="col-sm-12 col-lg-4 mb-3 ">
+                    <h5 class="mb-4 fs-6 fw-semibold">Construction Companies Bengaluru</h5>
+                    <ul class="nav flex-column fs-7">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white  ">Construction Company
+                                Bengaluru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Construction Contractors
+                                Bengaluru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Construction in
+                                Bengaluru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Builders in Bengaluru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Low-Cost House
+                                Construction in
+                                Bengaluru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Building Contractors
+                                Bengaluru</a>
+                        </li>
+                    </ul>
+                    <h5 class="mt-5 mb-4 fs-6 fw-medium">Construction Companies Mysuru</h5>
+                    <ul class="nav flex-column fs-7">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Construction Company
+                                Mysuru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Construction Contractors
+                                Mysuru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Construction in
+                                Mysuru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Builders in Mysuru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Low-Cost House
+                                Construction in
+                                Mysuru</a></li>
+                        <li class="nav-item mb-5"><a href="#" class="nav-link p-0 text-white">Building Contractors
+                                Mysuru</a></li>
+                    </ul>
+                    <h5 class="mt-5 mb-4 fs-6 fw-medium">Architectural Services</h5>
+                    <ul class="nav flex-column fs-7">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Residential Architects
+                                Bengaluru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Architects in
+                                Bengaluru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Residential Architects
+                                Hyderabad</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Architects in
+                                Hyderabad</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Residential Architects
+                                Chennai</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Architects in Chennai</a>
+                        </li>
+                        <a href="#" class="nav-link p-0 text-danger mb-3">View More</a>
+                    </ul>
+                </div>
+                <!-- 2nd Column -->
+                <div class="col-sm-12 col-lg-4 mb-3 ">
+                    <h5 class="mb-4 fs-6 fw-semibold">Construction Companies Hyderabad</h5>
+                    <ul class="nav flex-column fs-7 ">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white ">Construction Company
+                                Hyderabad</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Construction Contractors
+                                Hyderabad</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Construction in
+                                Bengaluru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Builders in Hyderabad</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Low-Cost House
+                                Construction in
+                                Hyderabad</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Building Contractors
+                                Hyderabad</a>
+                        </li>
+                    </ul>
+                    <h5 class="mt-5 mb-4 fs-6 fw-medium">Construction Companies Delhi NCR</h5>
+                    <ul class="nav flex-column fs-7">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Construction Company
+                                Delhi</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Construction Contractors
+                                Delhi</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Construction in
+                                Delhi</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Builders in Delhi</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Low-Cost House
+                                Construction in
+                                Delhi</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Building Contractors
+                                Delhi</a></li>
+                        <a href="#" class="nav-link p-0 text-danger">View More</a>
+                    </ul>
+                    <h5 class="mt-5 mb-4 fs-6 fw-medium">Villa Builders</h5>
+                    <ul class="nav flex-column fs-7">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Villa Builders in
+                                Bengaluru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Villa Builders in
+                                Bengaluru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Villa Builders in
+                                Chennai</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Villa Builders in
+                                Jaipur</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Villa Builders in
+                                Mysuru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Villa Builders in
+                                Delhi</a></li>
+                        <a href="#" class="nav-link p-0 text-danger mb-3">View More</a>
+                    </ul>
+                </div>
+                <!-- 3rd Column -->
+                <div class="col-sm-12 col-lg-4 mb-3 ">
+                    <h5 class="mb-4 fs-6 fw-semibold">Construction Companies Chennai</h5>
+                    <ul class="nav flex-column fs-7">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white ">Construction Company
+                                Chennai</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Construction Contractors
+                                Chennai</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Construction in
+                                Chennai</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Builders in Chennai</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Low-Cost House
+                                Construction in
+                                Chennai</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Building Contractors
+                                Chennai</a>
+                        </li>
+                    </ul>
+                    <h5 class="mt-5 mb-4 fs-6 fw-medium">Home Renovation Services</h5>
+                    <ul class="nav flex-column fs-7">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Renovation
+                                Bengaluru</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Renovation
+                                Hyderabad</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Renovation
+                                Chennai</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Renovation Jaipur</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Renovation Mysuru</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Renovation Delhi</a>
+                        </li>
+                        <a href="#" class="nav-link p-0 text-danger">View More</a>
+                    </ul>
+                    <h5 class="mt-5 mb-4 fs-6 fw-medium">Calculators</h5>
+                    <ul class="nav flex-column fs-7 ">
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Home Construction Cost
+                                Estimator</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Stamp duty Cost
+                                Estimator</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Foundation Cost
+                                Estimator</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">FSI Calculator</a></li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Khata Transfer Fees
+                                Calculator</a>
+                        </li>
+                        <li class="nav-item mb-3"><a href="#" class="nav-link p-0 text-white">Patta Cost Calculator</a>
+                        </li>
+                        <a href="#" class="nav-link p-0 text-danger mb-3">View More</a>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 3rd section Ends -->
+        <hr class="text-white-75">
+        <!-- 4th section Starts -->
+        <div class="container inline-padding">
+            <div class="div-first-heading">Get the Perfect House Plan with Brick&Bolt</div>
+            <p class="div-content">We understand the overwhelming effort that goes into building your dream home.
+                Dealing with
+                multiple contractors need not be a tiresome process anymore. Your search for an efficient house
+                construction
+                company ends with Brick&Bolt. We empower clients with the assurance of reliability, quality, timely
+                delivery,
+                and expert craftsmanship. With a motto to offer absolute transparency through technological assistance.
+            </p>
+            <div class="div-second-heading">Why Should You Consider Our Services for Home Construction?</div>
+            <p class="div-content">To ensure we meet your expectations of a dream home, our home constructions goes
+                through
+                470+ quality checks per floor. Our construction company ensures money safety through the ESCROW
+                mechanism. We
+                also have exceptional trademarked quality standards, QASCON (Quality Assessment System for
+                Construction).</p>
+        </div>
+        <!-- 4th section Ends -->
+        <hr class="text-white-75">
+        <!-- 5th section starts -->
+        <div class="container inline-padding">
+            <h5 class="mb-4 fs-3 fw-bold">Our Services</h5>
+            <div class="div-first-heading mb-3">B2C Construction Service</div>
+            <p class="div-content">As a tech-enabled construction company, we make the process of building your dream
+                home
+                smooth, efficient, and memorable. You can go through the pre-booking process and deep dive into the
+                designs,
+                quotations, contracts, blogs, and cost and material estimators. You also have the option to track the
+                post-booking process for real-time project progress and payment tracking. You will have everything at
+                your
+                fingertips. You are assured of live updates and quality checks on the project. You can also raise any
+                queries
+                through the app.</p>
+            <div class="div-second-heading">Residential Construction Service</div>
+            <p class="div-content">Our construction company stands out among the best in its field. Our designers and
+                engineers ensure incredible apartment construction services without compromising the quality of
+                resources and
+                building materials.</p>
+            <div class="div-second-heading">Villa Construction Service with House Architecture Plans</div>
+            <p class="div-content">Are you looking for an impeccable duplex house plan to create a weekend home? Or are
+                you
+                dreaming of getting your hands on a mansion to create a large family home? Our construction company will
+                help
+                you execute a flawless mansion plan.</p>
+            <div class="div-second-heading">Farmhouse Construction Services</div>
+            <p class="div-content">Wish to make your farmhouse construction relatively smooth and seamless? Brick&Bolt
+                offers
+                a dedicated team to ensure personalized design needs are met. They cater to your unique tastes and
+                requirements
+                without compromising quality or timely delivery.</p>
+
+            <div class="div-first-heading mb-3">House Plan</div>
+            <div class="div-second-heading">1BHK House Plan</div>
+            <p class="div-content">This layout comes under the dimensions of 20 by 30 house plans and has an area of
+                about 600
+                square feet. The house plan would typically consist of a well-designed living room, kitchen, one
+                bedroom, and a
+                large bathroom with a closet.</p>
+            <div class="div-second-heading">2BHK House Plan</div>
+            <p class="div-content">This typically comes under the 30 by 40 house plan with 1200-square-foot homes. These
+                are
+                ideal for medium-sized families. Our construction company creates spaces with an open living room,
+                kitchen, and
+                dining area. It includes two bedrooms with bathrooms, offering enough space even for guest visits.</p>
+            <div class="div-second-heading">3BHK House Plan</div>
+            <p class="div-content">A 3 BHK house plan includes homes with a 1200 square foot area. It is ideal for
+                Indian
+                families, accommodating the parents and children while leaving enough space for guests. It features a
+                living
+                room, kitchen, two bedrooms, one master bedroom, and two bathrooms.</p>
+            <div class="div-second-heading">Why Choose Brick&Bolt to build your dream construction?</div>
+            <p class="div-content">We are an efficient, reliable, and trusted construction company. Having built 4500+
+                homes
+                with 470+ quality checks per floor, our credibility is unmatched. Our standardized construction process
+                ensures
+                on-time delivery. We use the most advanced design software that builds an accurate 3D BIM model.</p>
+
+            <hr class="text-white-75">
+
+            <div class="div-first-heading mb-3">B2B Construction Service</div>
+            <p class="div-content">We offer construction partnership services to those seeking to build commercial
+                buildings.
+                You can expand your business through our flexible and adaptable techniques by partnering with us. With a
+                team of
+                over 800 contractors and a rigorous quality assurance process consisting of more than 470 checks, we are
+                fully
+                equipped to deliver exceptional commercial spaces that will elevate your business to new heights.</p>
+            <div class="div-second-heading">Commercial Construction Service</div>
+            <p class="div-content">We are an efficient construction company that creates impressive commercial spaces.
+                This
+                requires the intervention of several industry experts. Our commercial construction service allows for an
+                optimal
+                environment for increased productivity.</p>
+            <div class="div-second-heading">Warehouse Construction Service</div>
+            <p class="div-content">With a flawless building construction service, we deliver exceptional spaces designed
+                to
+                safeguard and preserve your valuable materials.</p>
+            <div class="div-second-heading">Retail Construction Service</div>
+            <p class="div-content">The highly-qualified designers employed at our construction company create
+                distinctive
+                retail space designs.</p>
+            <div class="div-second-heading">Hospital Construction Service: We build world-class hospital spaces</div>
+            <p class="div-content">With the best building material supply and appropriate design and construction. They
+                are
+                meticulously designed to cater to both doctors and patients.</p>
+            <div class="div-second-heading">Hospital Construction Service</div>
+            <p class="div-content">Looking to form a memorable guest-host bond? Our construction company will help you
+                make
+                the experience for your customers worth remembering.</p>
+            <div class="div-second-heading">School Construction Service</div>
+            <p class="div-content">Need help creating a space that nurtures bright minds and lively souls? Hire our
+                construction company to make your school's construction highly efficient with the added assistance of
+                technological advancements.</p>
+        </div>
+        <!-- 5th section ends -->
+        <hr class="text-white-75">
+        <!-- last section -->
+        <div class="container inline-padding">
+            <div class="div-first-heading">Locations</div>
+            <p class="fs-7">House Construction in bengaluru, House Construction in chennai, House Construction in
+                mysuru,
+                House Construction in hyderabad, House Construction in NCR faridabad, House Construction in NCR gurgaon,
+                House
+                Construction in NCR ghaziabad, House Construction in NCR delhi, House Construction in NCR noida, House
+                Construction in pune</p>
+        </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+
+    </script>
+    <!-- Bootstrap script linking -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <!-- swiper script linking from getting started with swiper -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- linking internal JS file -->
+    <script src="./Javascript/b&b_js.js"></script>
+    <script src="./Javascript/js-costEstimator.js"></script>
+
+</body>
+
+</html>
